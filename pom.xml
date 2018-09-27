@@ -62,6 +62,13 @@
 
 
 	<modules>
+		<!-- 个业务子系统API -->
 		<module>yczd-api-auth</module>
+		<module>yczd-api-gateway</module>
+		<!-- 公共服务 -->
+		<module>yczd-server-config</module>
+		<module>yczd-server-eureka</module>
+		<module>yczd-server-zipkin</module>
+		<module>yczd-server-admin</module>
 	</modules>
 </project>
