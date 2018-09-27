@@ -23,4 +23,9 @@
 hs_err_pid*
 
 # maven编译生成文件夹
-target
+target/
+
+# Eclipse设定文件
+.classpath
+.project
+.settings/
