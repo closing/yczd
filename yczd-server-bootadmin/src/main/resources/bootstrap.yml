@@ -1,0 +1,22 @@
+# API网关配置
+spring:
+  application:
+    name: yczd-server-bootadmin
+
+# 配置服务器
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: yczd-server-config
+      password: password
+      username: user
+      fail-fast: true
+
+# 服务注册
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://yczd-server-eureka:8761/eureka/
