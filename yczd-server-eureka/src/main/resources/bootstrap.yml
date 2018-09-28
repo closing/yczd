@@ -1,12 +1,15 @@
+# LOG
+logging:
+  level:
+    org.springframework.security: INFO
+
+# 注册服务器
+server:
+  port: 8761
+
 spring:
   application:
     name: yczd-server-eureka
-  cloud:
-    config:
-      uri: http://yczd-server-config:8888
-      fail-fast: true
-      password: password
-      username: user
 
 eureka:
   instance:
@@ -14,5 +17,16 @@ eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://yczd-server-eureka:8761/eureka/
     server:
       waitTimeInMsWhenSyncEmpty: 0
+      
+      
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
