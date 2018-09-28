@@ -1,0 +1,39 @@
+server:
+  port: 4000
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true 
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    yczd-api-auth:
+        path: /ua/**
+        serviceId: yczd-api-auth
+        stripPrefix: false
+        sensitiveHeaders:
+
+    #account-service:
+    #    path: /accounts/**
+    #    serviceId: account-service
+    #    stripPrefix: false
+    #    sensitiveHeaders:
+
+    #statistics-service:
+    #    path: /statistics/**
+    #    serviceId: statistics-service
+    #    stripPrefix: false
+    #    sensitiveHeaders:
+
+    #notification-service:
+    #    path: /notifications/**
+    #    serviceId: notification-service
+    #    stripPrefix: false
+    #    sensitiveHeaders:
+ 
