@@ -1,0 +1,9 @@
+logging:
+  level:
+    com.yczd.api.auth: DEBUG
+
+server:
+  port: 5000
+  servlet:
+    context-path: /ua
+    
