@@ -1,7 +1,9 @@
-# API网关配置
+# zipkin配置
+server:
+  port: 9411
 spring:
   application:
-    name: yczd-api-gateway
+    name: yczd-server-zipkin
   cloud:
     config:
       discovery:
@@ -10,8 +12,6 @@ spring:
       password: password
       username: user
       fail-fast: true
-  zipkin:
-    baseUrl: http://yczd-server-zipkin:9411/
   security:
     user:
       name: user

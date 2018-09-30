@@ -1,14 +1,16 @@
-package com.yczd.api.auth;
+package com.yczd.server.zipkin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+import zipkin2.server.internal.EnableZipkinServer;
+
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ApiAuthApplication {
-
+@EnableZipkinServer
+public class ZipkinApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ApiAuthApplication.class, args);
+		SpringApplication.run(ZipkinApplication.class, args);
 	}
 }
