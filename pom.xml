@@ -87,5 +87,6 @@
 		<module>yczd-server-eureka</module>
 		<module>yczd-server-bootadmin</module>
 		<module>yczd-server-zipkin</module>
+		<module>yczd-server-hystrix</module>
 	</modules>
 </project>

@@ -10,6 +10,10 @@ spring:
       password: password
       username: user
       fail-fast: true
+  security:
+    user:
+      name: user
+      password: password
 
 # 服务注册
 eureka:
