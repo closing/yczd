@@ -10,12 +10,20 @@ spring:
       password: password
       username: user
       fail-fast: true
-  zipkin:
-    baseUrl: http://yczd-server-zipkin:9411/
   security:
     user:
       name: user
       password: password
+ 
+ # Rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    #username: 
+    #password: 
+
+  zipkin:
+    baseUrl: http://yczd-server-zipkin:9411/
 
 # 服务注册
 eureka:
