@@ -3,7 +3,7 @@ logging:
   level:
     org.springframework.security: INFO
 
-# 注册服务器
+# 注册服务器设置
 server:
   port: 8761
 
