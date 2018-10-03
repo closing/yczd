@@ -15,7 +15,18 @@ spring:
       password: password
       username: user
       fail-fast: true
-
+ # Rabbitmq
+  rabbitmq:
+    host: yczd-server-rabbitmq
+    port: 5672
+    username: admin
+    password: admin
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 # 服务注册
 eureka:
   client:
@@ -23,10 +34,3 @@ eureka:
       defaultZone: http://yczd-server-eureka:8761/eureka/
   instance:
     prefer-ip-address: true
-    metadata-map:
-      health:
-        path: /auth/actuator/health
-    status-page-url-path: /auth/actuator/info
-    health-check-url-path: /auth/actuator/health
-
-  
