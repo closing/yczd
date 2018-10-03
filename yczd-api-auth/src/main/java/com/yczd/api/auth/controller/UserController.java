@@ -16,7 +16,7 @@ import com.yczd.api.auth.domain.User;
 import com.yczd.api.auth.service.UserService;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/auth/users")
 public class UserController {
 
 	@Autowired
