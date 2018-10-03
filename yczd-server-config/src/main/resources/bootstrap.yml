@@ -9,25 +9,32 @@ server:
 spring:
   application:
     name: yczd-server-config
+          
+  profiles:
+     active: native
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/shared
-  profiles:
-     active: native
+
   security:
     user:
       name: user
       password: password
- 
  #Rabbitmq配置
   rabbitmq:
     host: localhost
     port: 5672
-    #password: 
-    #username: 
- 
+    password: guest 
+    username: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      
 
 # 服务注册
 eureka:
