@@ -10,6 +10,9 @@ spring:
       password: password
       username: user
       fail-fast: true
+  profiles:
+    active: default
+ 
   security:
     user:
       name: user
@@ -17,11 +20,16 @@ spring:
  
  # Rabbitmq
   rabbitmq:
-    host: localhost
+    host: yczd-server-rabbitmq
     port: 5672
     #username: 
     #password: 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+          
   zipkin:
     baseUrl: http://yczd-server-zipkin:9411/
 
