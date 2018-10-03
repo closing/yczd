@@ -10,6 +10,11 @@ server:
 spring:
   application:
     name: yczd-server-eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 eureka:
   instance:
@@ -19,9 +24,7 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://yczd-server-eureka:8761/eureka/
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
-      
+
       
 #hystrix:
 #  command:
