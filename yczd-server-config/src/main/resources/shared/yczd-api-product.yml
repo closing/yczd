@@ -1,0 +1,12 @@
+logging:
+  level:
+    com.yczd.api.auth: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 5002
