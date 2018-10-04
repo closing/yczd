@@ -15,18 +15,6 @@ spring:
       password: password
       username: user
       fail-fast: true
- # Rabbitmq
-  rabbitmq:
-    host: yczd-server-rabbitmq
-    port: 5672
-    username: admin
-    password: admin
-    
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 # 服务注册
 eureka:
   client:
