@@ -11,7 +11,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://yczd-server-eureka:8761/eureka/
-
       
 # 配置服务
 spring:
@@ -23,6 +22,14 @@ spring:
       password: password
       username: user
       fail-fast: true
+      
+ # Rabbitmq
+  rabbitmq:
+    host: yczd-server-rabbitmq
+    port: 5672
+    username: admin
+    password: admin
+
 #hystrix:
 #  command:
 #    default:
