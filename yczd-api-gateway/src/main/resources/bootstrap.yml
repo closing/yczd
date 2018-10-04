@@ -17,22 +17,7 @@ spring:
     user:
       name: user
       password: password
- 
- # Rabbitmq
-  rabbitmq:
-    host: yczd-server-rabbitmq
-    port: 5672
-    #username: 
-    #password: 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
           
-  zipkin:
-    baseUrl: http://yczd-server-zipkin:9411/
-
 # 服务注册
 eureka:
   instance:
