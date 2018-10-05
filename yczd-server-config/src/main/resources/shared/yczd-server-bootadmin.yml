@@ -1,7 +1,14 @@
 server:
   port: 8081
+
 spring:
   cloud:
     loadbalancer:
       retry:
         enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
