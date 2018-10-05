@@ -1,0 +1,19 @@
+# 认证服务器配置
+spring:
+  application:
+    name: yczd-api-product
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: yczd-server-config
+      password: password
+      username: user
+      fail-fast: true
+# 服务注册
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://yczd-server-eureka:8761/eureka/
+  instance:
+    prefer-ip-address: true
