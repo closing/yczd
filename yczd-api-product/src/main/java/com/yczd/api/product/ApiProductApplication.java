@@ -1,0 +1,13 @@
+package com.yczd.api.product;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class ApiProductApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(ApiProductApplication.class, args);
+	}
+}
