@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: yczd-api-aio
+  # Data Source
+  datasource:
+    schema: classpath:/db/migration/v0_1_ddl_init.sql
+
+# 配置
+mybatis:
+  config-location: classpath:mybatis-config.xml
