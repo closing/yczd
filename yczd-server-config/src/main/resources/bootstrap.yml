@@ -27,8 +27,8 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    password: guest 
-    username: guest
+    password: admin 
+    username: admin
 
 management:
   endpoints:
@@ -40,7 +40,7 @@ management:
 # 服务注册
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
     serviceUrl:
       defaultZone: http://yczd-server-eureka:8761/eureka/
