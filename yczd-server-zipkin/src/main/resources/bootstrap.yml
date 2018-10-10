@@ -1,9 +1,21 @@
 # zipkin配置
 server:
   port: 9411
+  
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  
 spring:
   application:
     name: yczd-server-zipkin
+    
   cloud:
     config:
       discovery:
@@ -20,7 +32,9 @@ spring:
 # 服务注册
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
     serviceUrl:
       defaultZone: http://yczd-server-eureka:8761/eureka/
+      
+
