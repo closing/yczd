@@ -13,8 +13,13 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: true 
-
+        enabled: true
+  zipkin:
+    base-url: http://yczd-server-zipkin:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+      
 zuul:
   ignoredServices: '*'
   host:
