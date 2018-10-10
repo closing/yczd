@@ -7,7 +7,7 @@ logging:
 # 服务注册
 eureka:
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: false
   client:
     serviceUrl:
       defaultZone: http://yczd-server-eureka:8761/eureka/
