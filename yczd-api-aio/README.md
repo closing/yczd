@@ -1,7 +1,18 @@
-需要安装  
+需要安装的工具  
 * Java 8
 * Eclipse
 * Maven
+* PostMan（浏览器插件）
+
+开发软件说明：
+    Java用1.8,小版本号暂时没有要求    
+    Eclipse    
+        Eclipse Java EE IDE for Web Developers.    
+        版本>=4.7.3    
+    Maven
+        版本没有限制    
+    PostMan
+        版本没有限制
 
 1.在Eclipse下以maven工程导入到Eclipse工作空间    
   Eclipse->Import->Maven Project    
