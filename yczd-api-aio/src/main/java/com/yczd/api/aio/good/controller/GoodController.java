@@ -17,7 +17,7 @@ import com.yczd.api.aio.good.service.GoodService;
 
 
 @RestController
-@RequestMapping(value = "/v1/goods/")
+@RequestMapping(value = "/v1/goods")
 public class GoodController {
 
 	@Autowired
