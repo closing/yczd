@@ -1,8 +1,8 @@
-package com.yczd.api.aio.auth.service;
+package com.yczd.api.aio.user.service;
 
 import java.util.List;
 
-import com.yczd.api.aio.auth.domain.User;
+import com.yczd.api.aio.user.domain.User;
 
 public interface UserService {
 	List<User> findAll();
