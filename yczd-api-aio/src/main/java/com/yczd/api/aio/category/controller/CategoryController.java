@@ -17,7 +17,7 @@ import com.yczd.api.aio.category.service.CategoryService;
 
 
 @RestController
-@RequestMapping(value = "/v1/categories/")
+@RequestMapping(value = "/v1/categories")
 public class CategoryController {
 
 	@Autowired
