@@ -27,6 +27,13 @@ public class UserDao implements UserRepository {
 		return sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findById", id);
 	}
 
+	public Integer update(User user) {
+		return sqlSession.update("com.yczd.api.aio.user.dao.UserMapper.update", user);
+	}
+
+	public Integer insert(User user) {
+		return sqlSession.update("com.yczd.api.aio.user.dao.UserMapper.insert", user);
+	}
 	public User findByName(String userName) {
 		// TODO
 		return null;
@@ -34,19 +41,8 @@ public class UserDao implements UserRepository {
 	}
 
 	public void delete(User user) {
-		// TODO delete
-		sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
+		sqlSession.delete("com.yczd.api.aio.user.dao.UserMapper.delete", user);
 
-	}
-
-	public void update(User user) {
-		// TODO update
-		sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
-	}
-
-	public Integer insert(User user) {
-		// TODO insert
-		return sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
 	}
 
 	@Override
