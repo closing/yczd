@@ -18,7 +18,7 @@ public interface UserRepository {
 
 	public Integer insert(User user);
 
-	public void update(User user);
+	public Integer update(User user);
 
 	public void deleteById(String id);
 
