@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczd.api.aio.good.dao.GoodMapper">
+    <select id="findAll"
+			resultType="com.yczd.api.aio.good.domain.Good">
+        SELECT
+        	good_id AS goodId
+           ,good_name AS goodName
+           ,good_price AS goodPrice
+           ,good_main_url AS mainUrl
+           ,good_detail_urls AS goodDetailUrls
+           ,good_type AS goodType
+        FROM
+        	good
+    </select>
+    <select id="findById" parameterType="java.lang.String"
+    		resultType="com.yczd.api.aio.good.domain.Good">
+        SELECT
+        	good_id AS goodId
+           ,good_name AS goodName
+           ,good_price AS goodPrice
+           ,good_main_url AS mainUrl
+           ,good_detail_urls AS goodDetailUrls
+           ,good_type AS goodType
+        FROM
+        	good g
+        WHERE
+        	g.good_id = #{id}
+    </select>
+</mapper>
