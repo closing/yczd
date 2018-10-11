@@ -15,11 +15,14 @@ Maven版本没有限制
 PostMan 版本没有限制    
 ----
 ## 关于项目目录  
-项目使用的工具和项目工程文件目录最好大家统一  
+项目使用的工具和项目工程文件目录最好大家统一,例如乡下面的例子  
 &ensp;D:\yczd\eclipse\
 &ensp;D:\yczd\workspace\  
-&ensp;D:\yczd\workspace\xxx-prj  
-&ensp;D:\yczd\workspace\yyyy-prj  
+&ensp;D:\yczd\eclipse_workspace\xxx-prj  
+&ensp;D:\yczd\eclipse_workspace\yyyy-prj
+&ensp;D:\yczd\miniide\  
+&ensp;D:\yczd\mini_workspace\aa-prj  
+&ensp;D:\yczd\mini_workspace\bb-prj  
 &ensp;D:\yczd\document  
 &ensp;D:\yczd\tool\java  
 &ensp;D:\yczd\tool\maven    
