@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yczd.api.aio.order.dao.OrderMapper">
+    <select id="findAll"
+			resultType="com.yczd.api.aio.order.domain.Order">
+        SELECT
+        	order_id AS orderId
+           ,good_name AS goodName
+           ,good_price AS goodPrice
+           ,good_main_url AS goodMainUrl
+           ,good_num AS goodNum
+        FROM
+        	`order`
+    </select>
+    <select id="findById"
+			parameterType="java.lang.String"
+    		resultType="com.yczd.api.aio.order.domain.Order">
+        SELECT
+        	order_id AS orderId
+           ,good_name AS goodName
+           ,good_price AS goodPrice
+           ,good_main_url AS goodMainUrl
+           ,good_num AS goodNum
+        FROM
+        	`order` o
+        WHERE
+        	o.order_id = #{id}
+    </select>
+</mapper>
