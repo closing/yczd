@@ -15,7 +15,7 @@ Maven版本没有限制
 PostMan 版本没有限制    
 ----
 ## 关于项目目录  
-项目使用的工具和项目工程文件目录最好大家统一,例如乡下面的例子  
+项目使用的工具和项目工程文件目录最好大家统一,例如像下面的例子  
 &ensp;D:\yczd\eclipse\
 &ensp;D:\yczd\workspace\  
 &ensp;D:\yczd\eclipse_workspace\xxx-prj  
@@ -26,6 +26,8 @@ PostMan 版本没有限制
 &ensp;D:\yczd\document  
 &ensp;D:\yczd\tool\java  
 &ensp;D:\yczd\tool\maven    
+## 关于上面的说明
+暂时可以不统一，但最好是随着项目的进展大家尽量像相同的方向统一 
 
 1.在Eclipse下以maven工程导入到Eclipse工作空间    
   Eclipse->Import->Maven Project    
