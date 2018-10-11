@@ -17,7 +17,7 @@ import com.yczd.api.aio.cart.service.CartService;
 
 
 @RestController
-@RequestMapping(value = "/v1/carts/")
+@RequestMapping(value = "/v1/carts")
 public class CartController {
 
 	@Autowired
