@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth.repository.dao;
+package com.yczd.api.aio.user.repository.dao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.yczd.api.aio.auth.domain.User;
-import com.yczd.api.aio.auth.repository.UserRepository;
+import com.yczd.api.aio.user.domain.User;
+import com.yczd.api.aio.user.repository.UserRepository;
 
 /**
  * MyBatis
@@ -20,32 +20,33 @@ public class UserDao implements UserRepository {
 	private SqlSession sqlSession;
 
 	public List<User> findAll() {
-		return sqlSession.selectList("com.yczd.api.aio.auth.dao.UserMapper.findAll");
+		return sqlSession.selectList("com.yczd.api.aio.user.dao.UserMapper.findAll");
 	}
 
 	public User findById(String id) {
-		return sqlSession.selectOne("com.yczd.api.aio.auth.dao.UserMapper.findById", id);
+		return sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findById", id);
 	}
 
 	public User findByName(String userName) {
-		return sqlSession.selectOne("com.yczd.api.aio.auth.dao.UserMapper.findByName", userName);
+		// TODO
+		return null;
 
 	}
 
 	public void delete(User user) {
 		// TODO delete
-		sqlSession.selectOne("com.yczd.api.aio.auth.dao.UserMapper.findByName", user);
+		sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
 
 	}
 
 	public void update(User user) {
 		// TODO update
-		sqlSession.selectOne("com.yczd.api.aio.auth.dao.UserMapper.findByName", user);
+		sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
 	}
 
 	public Integer insert(User user) {
 		// TODO insert
-		return sqlSession.selectOne("com.yczd.api.aio.auth.dao.UserMapper.findByName", user);
+		return sqlSession.selectOne("com.yczd.api.aio.user.dao.UserMapper.findByName", user);
 	}
 
 	@Override
