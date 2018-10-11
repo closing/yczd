@@ -17,7 +17,7 @@ import com.yczd.api.aio.order.service.OrderService;
 
 
 @RestController
-@RequestMapping(value = "/v1/orders/")
+@RequestMapping(value = "/v1/orders")
 public class OrderController {
 
 	@Autowired
