@@ -31,17 +31,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(User user) {
+		Integer result;
 		if (user.getUserId() == null) {
-			Integer id = userRepository.insert(user);
-			user.setUserId(id);
+			 result = userRepository.insert(user);
 		} else {
-
+			result=userRepository.update(user);
 		}
-		return null;
+		return user;
 	}
 
 	@Override
 	public void delete(User user) {
+		userRepository.delete(user);
 
 	}
 
