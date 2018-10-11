@@ -42,3 +42,8 @@ PostMan 版本没有限制
 3.选中项目下pom.xml文件，右键单击，选运行方式->Maven Install    
 4.选中工程，右键单击，选运行方式->Spring Boot App     
 5.访问localhost:8080/v1/goods确认    
+## 项目说明
+1.主要使用的框架Spring Boot + Spring FrameWork + MyBatis  
+2.大体运行流程，项目启动后,以url(+http method)方式访问项目资源&ensp;  
+&ensp;例如:locahost:8080/v1/goods    
+&ensp;GoodController->GoodService->GoodRepository(GoodDao)->GoodMapper
