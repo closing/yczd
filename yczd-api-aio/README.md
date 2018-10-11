@@ -1,15 +1,15 @@
-需要安装的工具  
+## 需要安装的工具  
 * Java 8
 * Eclipse
 * Maven
 * PostMan（浏览器插件）
 
-开发软件说明：   
-        Java用1.8,小版本号暂时没有要求    
-            Eclipse 用Eclipse Java EE IDE for Web Developers.    
-            版本>=4.7.3    
-        Maven版本没有限制    
-        PostMan 版本没有限制
+## 开发软件说明：   
+&ensp; Java用1.8,小版本号暂时没有要求    
+&ensp; Eclipse 用Eclipse Java EE IDE for Web Developers.    
+&ensp; &ensp; 版本>=4.7.3    
+&ensp; Maven版本没有限制    
+&ensp; PostMan 版本没有限制
 关于项目目录    
   项目使用的工具和项目工程文件目录最好大家统一
   D:\yczd\eclipse\
