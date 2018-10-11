@@ -1,8 +1,8 @@
-package com.yczd.api.aio.auth.repository;
+package com.yczd.api.aio.user.repository;
 
 import java.util.List;
 
-import com.yczd.api.aio.auth.domain.User;
+import com.yczd.api.aio.user.domain.User;
 
 /**
  * 用户数据库操作接口类
