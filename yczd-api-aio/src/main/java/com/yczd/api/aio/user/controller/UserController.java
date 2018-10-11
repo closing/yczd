@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth.controller;
+package com.yczd.api.aio.user.controller;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yczd.api.aio.auth.domain.User;
-import com.yczd.api.aio.auth.service.UserService;
+import com.yczd.api.aio.user.domain.User;
+import com.yczd.api.aio.user.service.UserService;
 
 @RestController
-@RequestMapping(value = "/v1/auth/users")
+@RequestMapping(value = "/v1/users")
 public class UserController {
 
 	@Autowired
