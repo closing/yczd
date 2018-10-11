@@ -33,11 +33,12 @@ PostMan 版本没有限制
 ----
 
 ## 导入Eclipse
-1.把代码下载到本地电脑
-
-1.在Eclipse下以maven工程导入到Eclipse工作空间    
-  Eclipse->Import->Maven Project    
-2.选中导入的工程，右键单击，选maven里面的更新工程  
-3.选中pom.xml文件，右键单击，选执行里面的maven install    
-4.选中工程，右键单击，选执行里面的 SpringBoot工程    
-5.访问localhost:8080/v1/goods    
+1.把代码下载到本地电脑  
+&ensp;https://github.com/closing/yczd,Clone or Download
+2.在Eclipse下以maven工程导入到Eclipse工作空间    
+&ensp;Eclipse->Import->Maven->Existing Maven Projects    
+&ensp;只导入yczd-api-aio  
+2.选中导入的yczd-api-aio，右键单击，选maven->Update Project  
+3.选中项目下pom.xml文件，右键单击，选运行方式->Maven Install    
+4.选中工程，右键单击，选运行方式->Spring Boot App     
+5.访问localhost:8080/v1/goods确认    
