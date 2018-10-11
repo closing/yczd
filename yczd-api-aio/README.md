@@ -6,12 +6,12 @@
 ----
 ## 开发软件说明  
 
-Java    
-&ensp; 用1.8,小版本号暂时没有要求    
-Eclipse
-&ensp; 用Eclipse Java EE IDE for Web Developers.    
-&ensp; 版本>=4.7.3    
-Maven版本没有限制    
+Java  
+&ensp; 用1.8,小版本号暂时没有要求  
+Eclipse  
+&ensp; 用Eclipse Java EE IDE for Web Developers.  
+&ensp; 版本>=4.7.3  
+Maven版本没有限制  
 PostMan 版本没有限制    
 ----
 ## 关于项目目录    
