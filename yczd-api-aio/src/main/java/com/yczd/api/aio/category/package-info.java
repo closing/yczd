@@ -1,8 +1,8 @@
 /**
- *  购物车
+ *  商品类别
  */
 /**
  * @author YCZD
  *
  */
-package com.yczd.api.aio.cart;
+package com.yczd.api.aio.category;
