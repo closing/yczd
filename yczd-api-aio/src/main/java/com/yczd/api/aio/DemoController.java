@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth.controller;
+package com.yczd.api.aio;
 
 import java.util.Arrays;
 import java.util.List;
