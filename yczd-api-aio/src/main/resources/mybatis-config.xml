@@ -4,9 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<package name="com.yczd.api.aio.auth.domain" />
+		<package name="com.yczd.api.aio.user.domain" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/mapper/com/yczd/api/aio/auth/dao/UserMapper.xml" />
+		<mapper resource="mybatis/mapper/com/yczd/api/aio/user/dao/UserMapper.xml" />
+		<mapper resource="mybatis/mapper/com/yczd/api/aio/category/dao/CategoryMapper.xml" />
+		<mapper resource="mybatis/mapper/com/yczd/api/aio/good/dao/GoodMapper.xml" />
+		<mapper resource="mybatis/mapper/com/yczd/api/aio/cart/dao/CartMapper.xml" />
+		<mapper resource="mybatis/mapper/com/yczd/api/aio/order/dao/OrderMapper.xml" />
+
 	</mappers>
 </configuration>
