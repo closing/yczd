@@ -17,11 +17,12 @@ PostMan 版本没有限制
 ## 关于项目目录  
 项目使用的工具和项目工程文件目录最好大家统一  
 &ensp;D:\yczd\eclipse\
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;\workspace  
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;\xxx-prj
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;\document  
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;\  
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;\workspace  
+&ensp;D:\yczd\workspace\  
+&ensp;D:\yczd\workspace\xxx-prj  
+&ensp;D:\yczd\workspace\yyyy-prj  
+&ensp;D:\yczd\document  
+&ensp;D:\yczd\tool\java  
+&ensp;D:\yczd\tool\maven    
 
 1.在Eclipse下以maven工程导入到Eclipse工作空间    
   Eclipse->Import->Maven Project    
