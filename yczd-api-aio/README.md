@@ -4,15 +4,16 @@
 * Maven
 * PostMan（浏览器插件）
 
-开发软件说明：
-    Java用1.8,小版本号暂时没有要求    
-    Eclipse    
-        Eclipse Java EE IDE for Web Developers.    
-        版本>=4.7.3    
-    Maven
-        版本没有限制    
-    PostMan
-        版本没有限制
+开发软件说明：   
+        Java用1.8,小版本号暂时没有要求    
+            Eclipse 用Eclipse Java EE IDE for Web Developers.    
+            版本>=4.7.3    
+        Maven版本没有限制    
+        PostMan 版本没有限制
+关于项目目录    
+  项目使用的工具和项目工程文件目录最好大家统一
+  D:\yczd\eclipse\
+         \
 
 1.在Eclipse下以maven工程导入到Eclipse工作空间    
   Eclipse->Import->Maven Project    
