@@ -30,6 +30,11 @@ PostMan 版本没有限制
 ## 关于上面的说明
 暂时可以不统一，但最好是随着项目的进展大家尽量像相同的方向统一 
 
+----
+
+## 导入Eclipse
+1.把代码下载到本地电脑
+
 1.在Eclipse下以maven工程导入到Eclipse工作空间    
   Eclipse->Import->Maven Project    
 2.选中导入的工程，右键单击，选maven里面的更新工程  
