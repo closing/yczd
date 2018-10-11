@@ -5,7 +5,6 @@
 * PostMan（浏览器插件）
 ----
 ## 开发软件说明  
-
 Java  
 &ensp; 用1.8,小版本号暂时没有要求  
 Eclipse  
@@ -13,7 +12,9 @@ Eclipse
 &ensp; 版本>=4.7.3  
 Maven版本没有限制  
 PostMan 版本没有限制    
+
 ----
+
 ## 关于项目目录  
 项目使用的工具和项目工程文件目录最好大家统一,例如像下面的例子  
 &ensp;D:\yczd\eclipse\
