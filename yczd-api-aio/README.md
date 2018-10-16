@@ -10,6 +10,8 @@ Java
 Eclipse  
 &ensp; 用Eclipse Java EE IDE for Web Developers.  
 &ensp; 版本>=4.7.3  
+&ensp;插件   
+&ensp;&ensp;Spring Tool Suite, MyBatipse,MyBatis Generator   
 Maven版本没有限制  
 PostMan 版本没有限制    
 
