@@ -65,3 +65,11 @@ CREATE TABLE `order` (
   `good_num` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`)
 );
+DROP TABLE IF EXISTS `shop`;
+CREATE TABLE `shop` (
+  `shop_id` int(11) NOT NULL AUTO_INCREMENT,
+  `shop_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`shop_id`)
+);
+insert into shop (shop_name) values ('shop1');
+insert into shop (shop_name) values ('shop2');
