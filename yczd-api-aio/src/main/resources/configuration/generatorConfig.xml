@@ -39,7 +39,10 @@
                              targetPackage="${mbg.target-package.mapper}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <table tableName="category" domainObjectName="Category" modelType="flat">
+        <table tableName="shop" domainObjectName="Shop" modelType="flat">
+        	<generatedKey column="shop_id" identity="shop_id" sqlStatement="MySql" />
+        </table>
+        <!-- <table tableName="category" domainObjectName="Category" modelType="flat">
             <generatedKey column="cat_id" identity="cat_id" sqlStatement="MySql"/>
         </table>
         <table tableName="cart" domainObjectName="Cart" modelType="flat">
@@ -53,6 +56,6 @@
         </table>
         <table tableName="user" domainObjectName="User" modelType="flat">
             <generatedKey column="user_id" identity="user_id" sqlStatement="MySql"/>
-        </table>
+        </table> -->
     </context>
 </generatorConfiguration>
