@@ -18,7 +18,7 @@
 		<mapper
 			resource="mybatis/mapper/com/yczd/api/aio/order/dao/OrderMapper.xml" />
 		<mapper
-			resource="mybatis/mapper/com/yczd/api/aio/demo/dao/mapper/ShopMapper.xml" />
+			resource="mybatis/mapper/com/yczd/api/aio/shop/dao/mapper/ShopMapper.xml" />
 	</mappers>
 
 </configuration>
