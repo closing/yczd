@@ -1,8 +1,20 @@
 package com.yczd.api.aio.shop.service;
 
-import com.yczd.api.aio.shop.domain.Shop;
+import java.util.List;
+import java.util.Optional;
+
+import com.yczd.api.aio.shop.model.Shop;
 
 public interface ShopService {
-	public Shop getById(Integer id);
+	public Optional<Shop> getById(Integer id);
 
+	public List<Shop> getShops();
+
+	public Shop save(Shop shop);
+
+	public int delete(Shop shop);
+
+	public int deleteById(Integer shopId);
+
+	public boolean exist(Integer shopId);
 }
