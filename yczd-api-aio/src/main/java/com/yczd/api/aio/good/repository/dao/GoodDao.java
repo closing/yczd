@@ -6,8 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.yczd.api.aio.good.domain.Good;
+import com.yczd.api.aio.good.model.Good;
 import com.yczd.api.aio.good.repository.GoodRepository;
+import com.yczd.api.aio.good.repository.dao.mapper.GoodMapper;
 
 /**
  * MyBatis
@@ -20,12 +21,13 @@ public class GoodDao implements GoodRepository {
 	private SqlSession sqlSession;
 
 	public List<Good> findAll() {
-		return sqlSession.selectList("com.yczd.api.aio.good.dao.GoodMapper.findAll");
+		return sqlSession.getMapper(GoodMapper.class).selectAll();
 	}
 
-	public Good findById(String id) {
-		return sqlSession.selectOne("com.yczd.api.aio.good.dao.GoodMapper.findById", id);
+	public Good findById(Integer id) {
+		return sqlSession.getMapper(GoodMapper.class).selectByPrimaryKey(id);
 	}
+
 	public void delete(Good good) {
 		// TODO delete
 
@@ -41,7 +43,7 @@ public class GoodDao implements GoodRepository {
 	}
 
 	@Override
-	public void deleteById(String id) {
+	public void deleteById(Integer id) {
 		// TODO deleteById
 
 	}
