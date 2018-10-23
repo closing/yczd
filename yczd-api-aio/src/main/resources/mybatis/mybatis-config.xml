@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.yczd.api.aio.user.domain" />
+	</typeAliases>
+	<mappers>
+		<mapper
+			resource="mybatis/com/yczd/api/aio/user/dao/UserMapper.xml" />
+		<mapper
+			resource="mybatis/com/yczd/api/aio/category/dao/CategoryMapper.xml" />
+		<mapper
+			resource="mybatis/com/yczd/api/aio/good/dao/mapper/GoodMapper.xml" />
+		<mapper
+			resource="mybatis/com/yczd/api/aio/cart/dao/CartMapper.xml" />
+		<mapper
+			resource="mybatis/com/yczd/api/aio/order/dao/OrderMapper.xml" />
+		<mapper
+			resource="mybatis/com/yczd/api/aio/shop/dao/mapper/ShopMapper.xml" />
+	</mappers>
+
+</configuration>
