@@ -8,7 +8,7 @@ spring:
     name: yczd-api-aio
 
 mybatis:
-  config-location: classpath:mybatis-config.xml
+  config-location: classpath:mybatis/mybatis-config.xml
 
 ---
 # 开发环境
