@@ -51,6 +51,10 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 		<!-- CommonLib End -->
 		<!-- 测试 dependencies -->
 		<dependency>
@@ -89,16 +93,8 @@
 					<configurationFile>${basedir}/src/main/resources/configuration/generatorConfig.xml</configurationFile>
 					<overwrite>true</overwrite>
 				</configuration>
-				<!--
-				<executions>
-					<execution>
-						<id>Generator Mybatis Files</id>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-				 	</execution>
-				</executions>
-				 -->
+				<!-- <executions> <execution> <id>Generator Mybatis Files</id> <goals> 
+					<goal>generate</goal> </goals> </execution> </executions> -->
 			</plugin>
 
 		</plugins>
