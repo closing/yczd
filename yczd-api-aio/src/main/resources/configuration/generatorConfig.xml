@@ -40,7 +40,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <table tableName="shop" domainObjectName="Shop" modelType="flat">
-        	<generatedKey column="shop_id" identity="shop_id" sqlStatement="MySql" />
+        	<generatedKey column="shop_id" identity="true" sqlStatement="MySql" />
         </table>
         <!-- <table tableName="category" domainObjectName="Category" modelType="flat">
             <generatedKey column="cat_id" identity="cat_id" sqlStatement="MySql"/>
