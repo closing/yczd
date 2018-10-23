@@ -20,6 +20,7 @@ public class RootController {
 		links.add("/v1/carts/");
 		links.add("/v1/orders/");
 		links.add("/v1/users/");
+		links.add("/v1/shops/");
 
 		return links;
 
