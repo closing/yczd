@@ -2,7 +2,7 @@ package com.yczd.api.aio.shop.web.controller;
 
 import java.net.URI;
 
-import org.h2.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,16 +40,14 @@ public class ShopController {
 		// ============写法1:============
 		// 参数的验证
 		// @PathVariable 不支持注解校验
-		if (!StringUtils.isNumber(id)) {
-			//商铺ID必须是数值,如果不是数值，属于异常
+		if (!StringUtils.isNumeric(id)) {
+			// 商铺ID必须是数值,如果不是数值，属于异常
 		}
 
 		Integer shopId = Integer.parseInt(id);
 
 		// 数据查询 返回结果
-		return shopService.getById(shopId)
-				.map(shop -> ResponseEntity.ok()
-						.body(shop))
+		return shopService.getById(shopId).map(shop -> ResponseEntity.ok().body(shop))
 				.orElse(ResponseEntity.notFound().build());
 
 	}
@@ -59,21 +57,16 @@ public class ShopController {
 
 		shopService.save(shop);
 
-		URI location = ServletUriComponentsBuilder
-				.fromCurrentRequest()
-				.path("/{id}")
-				.buildAndExpand(shop.getShopId())
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(shop.getShopId())
 				.toUri();
 
-		return ResponseEntity
-				.created(location)
-				.body(shop);
+		return ResponseEntity.created(location).body(shop);
 	}
 
-	@PutMapping(value="/{id}")
-	public ResponseEntity<?> update(@PathVariable(name="id") String id, @RequestBody Shop shop) {
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<?> update(@PathVariable(name = "id") String id, @RequestBody Shop shop) {
 
-		Integer shopId = Integer.parseInt(id) ;
+		Integer shopId = Integer.parseInt(id);
 
 		if (!shopService.exist(shopId)) {
 			// TODO
