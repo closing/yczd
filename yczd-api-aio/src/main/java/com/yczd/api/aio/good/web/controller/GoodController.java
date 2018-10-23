@@ -1,6 +1,6 @@
 package com.yczd.api.aio.good.web.controller;
 
-import org.h2.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +28,7 @@ public class GoodController {
 		// ============写法2:============
 		// 参数校验及类型转换
 		// @PathVariable 不支持注解校验
-		if (!StringUtils.isNumber(id)) {
+		if (!StringUtils.isNumeric(id)) {
 			// 商品ID必须是数值,如果不是数值，属于异常
 		}
 
