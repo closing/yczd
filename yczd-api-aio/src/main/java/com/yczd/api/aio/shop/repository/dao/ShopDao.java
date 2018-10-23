@@ -25,7 +25,7 @@ public class ShopDao implements ShopRepository {
 
 	@Override
 	public List<Shop> getShops() {
-		return sqlSession.getMapper(ShopMapper.class).selectAll();
+		return sqlSession.selectList("com.yczd.api.aio.shop.repository.dao.mapper.ShopMapper.selectAll");
 	}
 
 	@Override
