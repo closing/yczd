@@ -2,12 +2,12 @@ package com.yczd.api.aio.good.service;
 
 import java.util.List;
 
-import com.yczd.api.aio.good.domain.Good;
+import com.yczd.api.aio.good.model.Good;
 
 public interface GoodService {
 	List<Good> findAll();
 
-	Good findById(String id);
+	Good findById(Integer id);
 
 	Good findByName(String name);
 
@@ -15,5 +15,5 @@ public interface GoodService {
 
 	void delete(Good good);
 
-	void deleteById(String id);
+	void deleteById(Integer id);
 }
