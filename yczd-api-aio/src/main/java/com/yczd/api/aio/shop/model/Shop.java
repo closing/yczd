@@ -1,4 +1,4 @@
-package com.yczd.api.aio.shop.domain;
+package com.yczd.api.aio.shop.model;
 
 import java.io.Serializable;
 
