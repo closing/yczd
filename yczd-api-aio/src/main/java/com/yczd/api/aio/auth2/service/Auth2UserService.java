@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth2.sevice;
+package com.yczd.api.aio.auth2.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
