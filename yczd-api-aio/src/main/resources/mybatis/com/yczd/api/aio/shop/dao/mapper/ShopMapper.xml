@@ -105,14 +105,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yczd.api.aio.shop.model.Shop">
-    <selectKey keyProperty="shopId" order="BEFORE" resultType="java.lang.Integer">
+    <selectKey keyProperty="shopId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into shop (shop_id, shop_name)
     values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yczd.api.aio.shop.model.Shop">
-    <selectKey keyProperty="shopId" order="BEFORE" resultType="java.lang.Integer">
+    <selectKey keyProperty="shopId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into shop
