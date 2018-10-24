@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth2.sevice.impl;
+package com.yczd.api.aio.auth2.service.impl;
 
 import java.util.HashSet;
 import java.util.Optional;
