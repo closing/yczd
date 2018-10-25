@@ -1,0 +1,56 @@
+一共三个Project
+jn_yczd_interface:app调用的接口
+android:Android App
+jn_yczd_admin:后台管理
+
+1.数据库（MySql）
+	数据库名:jn_yczd
+	表结构定义和部分数据已发公司邮箱，把数据库服务器做出来。
+	说明：如果已经有的话，可以直接使用原来的不需要重复创建
+2.Eclipse设置
+	窗口->首选项->Java->编译器->错误/警告->Null analysis
+	把空指针访问和可能的空指针访问调为警告
+	把Enable annotation-based null analysis 设置为非选择
+3.jn_yczd_admin
+	1.常规eclipse工程导入
+		文件->导入->常规->Projects From Folder Archive
+	2.修改设置
+		选中Project->右键->属性->项目构面->Java 改为1.8
+	3.运行
+	    选中Project->右键->在服务器上运行
+		说明：如果Eclipse安装了Jetty插件，也可以选Run with Jetty
+		访问http://localhost:8080，可以验证
+	4.数据库链接设置
+		Java Resources
+			resources
+				dbconfig.properties
+4.jn_yczd_interface
+	1.常规eclipse工程导入
+		文件->导入->常规->Projects From Folder Archive
+	2.修改设置
+		选中Project->右键->属性->项目构面->Java 改为1.8
+	3.运行
+	    选中Project->右键->在服务器上运行
+		说明：如果Eclipse安装了Jetty插件，也可以选Run with Jetty
+		访问http://localhost:8080/u_users/login验证
+	4.数据库链接设置
+		Java Resources
+			res
+				config.txt
+
+5.android
+	1.直接打开项目
+		File->Open 选择项目文件夹
+	2.项目会自动编译，如果没有自动编译。可以选Build->Rebuild 编译
+	3.如果编译过程中有错误，修改Build Sript然后在编译
+		找到build.gradle文件，搜索google()，把google()放在所属节点的最开始
+		例如：
+			 repositories {
+				google()
+				jcenter()
+			}
+	4.运行
+		Run->14_shop（14_station,14_driver）
+		可以用模拟器运行，也可以把手机链接到电脑，并打开开发者模式直接在手机上运行
+
+	说明：Android Studio打开项目和运行的时候会有一些自动处理，根据说明操作
