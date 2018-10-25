@@ -1,0 +1,24 @@
+源产直达API开发手册
+
+数据库
+	数据库名称:yczd_mini
+	
+1.最初生产库DbScript的导出
+	登陆云
+
+
+基本框架
+Spring framework + Spring boot + Mybatis
+
+Mybatis:
+	Mapper.java
+
+权限认证框架使用OAuth2
+
+Restful
+
+
+启动方式
+	1.右键选中Project
+	2.执行方式选择Spring Boot App
+	3.启动后，访问http://localhost:8080/
