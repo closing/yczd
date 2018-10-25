@@ -1,0 +1,125 @@
+源产直达开发环境安装手册
+
+前提
+	以所有安装软件的父目录为 D:\yczd 
+	说明：未安装的软件，要严格按照说明安装
+	      已经安装过的软件，在不影响开发的前提下，可以保留原来配置。
+	      
+1.Java
+	0.验证是否已经安装
+		打开命令行窗口CMD，输入java -version
+		如果屏幕上回显Java的版本号，则已经安装
+		如果显示错误，则Java没有安装或者环境变量没有配置，按照下面顺序安装
+		
+	1.版本Java8	
+		说明：小版本号无限制，以安装时间的版本号为准
+	2.下载地址
+		https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+		64位系统：jdk-8u191-windows-x64.exe
+		32位系统：jdk-8u191-windows-i586.exe
+	3.安装目录
+		D:\yczd\java\jdk8
+	4.环境变量设置
+	    添加
+	    	变量名      变量值
+			JAVA_HOME	D:\yczd\java\jdk8
+			JRE_HOME 	%JAVA_HOME%\jre
+		变更
+			PATH 		;%JAVA_HOME%\bin
+			说明：PATH的变更一定要注意，在原有变量值的最后边添加变量值,不要漏掉分号
+	5.验证
+		打开命令行窗口CMD，输入java -version
+		如果屏幕上回显Java的版本号，则安装正确
+
+以下工具的安装没有前后顺序，可以自行决定安装顺序和哪些安装
+2.Maven
+	0.验证是否已经安装
+		打开命令行窗口CMD，输入mvn -v
+		如果屏幕上回显Maven的版本号，则已经安装
+		如果显示错误，则Maven没有安装或者环境变量没有配置，按照下面顺序安装
+		如果Java没有安装，也会显示错误，根据错误信息判断。
+		
+	1.版本3.5.4	
+		说明：版本号无限制，以安装时间的版本号为准
+	2.下载地址
+		http://maven.apache.org/download.cgi
+		apache-maven-3.5.4-bin.zip
+	3.安装目录
+		D:\yczd\java\maven\apache-maven-x.x.x
+		说明:x.x.x版本号
+	4.环境变量
+	    添加
+	    	变量名      变量值
+			MAVEN_HOME	D:\yczd\maven\apache-maven-x.x.x
+		变更
+			PATH 		;%MAVEN_HOME%\bin
+			说明：PATH的变更一定要注意，在原有变量值的最后边添加变量值,不要漏掉分号
+	5.验证
+		打开命令行窗口CMD，输入mvn -v
+		如果屏幕上回显maven的版本号，则安装正确
+3.Gradle
+	0.验证是否已经安装
+		打开命令行窗口CMD，输入gradle -v
+		如果屏幕上回显Gradle的版本号，则已经安装
+		如果显示错误，则Gradle没有安装或者环境变量没有配置，按照下面顺序安装
+		
+	1.版本3.5.4	
+		说明：版本号无限制，以安装时间的版本号为准
+	2.下载地址
+		https://gradle.org/releases/
+		
+		Download:binary-only
+		gradle-4.10.2-bin.zip
+		
+	3.安装目录
+		D:\yczd\java\gradle\gradle-x.x
+		说明:x.x版本号
+	4.环境变量
+	    添加
+	    	变量名      变量值
+			GRADLE_HOME	D:\yczd\java\gradle\gradle-x.x
+		变更
+			PATH 		;%GRADLE_HOME%\bin
+			说明：PATH的变更一定要注意，在原有变量值的最后边添加变量值,不要漏掉分号
+	5.验证
+		打开命令行窗口CMD，输入gradle -v
+		如果屏幕上回显Gradle的版本号，则安装正确
+4.Eclipse
+	1.版本Eclipse Oxygen (4.7) Eclipse IDE for Java EE Developers
+		说明：小版本版本号无限制，以安装时间的版本号为准
+		
+	2.下载地址
+		https://www.eclipse.org/downloads/packages/release/oxygen/3a
+		
+		Eclipse IDE for Java EE Developers
+		Windows 32-bit 64-bit 
+		
+	3.安装目录
+		D:\yczd\eclipse
+		说明:x.x版本号
+	
+	4.插件
+		1.STS(Spring Tool Suite) 
+			版本，以安装时点为准
+		2. MyBatipse
+			版本，以安装时点为准
+		3.MyBatis Generator 
+			版本，以安装时点为准
+			
+5.浏览器插件PostMan
+	1.版本
+		版本，以安装时点为准
+6.Android Studio
+	1.版本号3.2.1
+		说明：小版本版本号无限制，以安装时间的版本号为准
+	2.下载地址	
+		https://developer.android.com/studio/
+	3.安装目录
+		D:\yczd\androidstutio
+
+TODO
+5.Tomcat
+6.Mysql
+7.SVN
+8.miniide
+9.xxxx
