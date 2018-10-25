@@ -106,7 +106,7 @@
 		3.MyBatis Generator 
 			版本，以安装时点为准
 			
-5.浏览器插件PostMan
+5.浏览器插件PostMan或者Restlet Client - REST API Testing
 	1.版本
 		版本，以安装时点为准
 6.Android Studio
