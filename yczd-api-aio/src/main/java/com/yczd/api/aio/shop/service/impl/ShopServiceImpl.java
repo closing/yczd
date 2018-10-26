@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yczd.api.aio.shop.model.Shop;
+import com.yczd.api.aio.shop.model.entity.Shop;
 import com.yczd.api.aio.shop.repository.ShopRepository;
 import com.yczd.api.aio.shop.service.ShopService;
 
