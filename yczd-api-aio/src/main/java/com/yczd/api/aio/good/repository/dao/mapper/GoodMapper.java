@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
-import com.yczd.api.aio.good.model.Good;
-import com.yczd.api.aio.good.model.GoodCriteria;
+import com.yczd.api.aio.good.model.entity.Good;
+import com.yczd.api.aio.good.model.entity.GoodCriteria;
 
 public interface GoodMapper {
     long countByExample(GoodCriteria example);
