@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yczd.api.aio.good.model.Good;
+import com.yczd.api.aio.good.model.entity.Good;
 import com.yczd.api.aio.good.service.GoodService;
 
 @RestController
