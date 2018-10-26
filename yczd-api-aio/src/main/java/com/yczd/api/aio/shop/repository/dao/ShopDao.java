@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import com.yczd.api.aio.shop.model.Shop;
+import com.yczd.api.aio.shop.model.entity.Shop;
 import com.yczd.api.aio.shop.repository.ShopRepository;
 import com.yczd.api.aio.shop.repository.dao.mapper.ShopMapper;
 
