@@ -1,4 +1,4 @@
-package com.yczd.api.aio.good.model.entity.dto;
+package com.yczd.api.aio.good.model.dto;
 
 import java.math.BigDecimal;
 
