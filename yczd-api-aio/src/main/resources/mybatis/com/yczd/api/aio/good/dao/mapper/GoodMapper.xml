@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yczd.api.aio.good.repository.dao.mapper.GoodMapper">
-  <resultMap id="BaseResultMap" type="com.yczd.api.aio.good.model.Good">
+  <resultMap id="BaseResultMap" type="com.yczd.api.aio.good.model.entity.Good">
     <id column="good_id" jdbcType="INTEGER" property="goodId" />
     <result column="good_name" jdbcType="VARCHAR" property="goodName" />
     <result column="good_price" jdbcType="DECIMAL" property="goodPrice" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     good_id, good_name, good_price, good_main_url, good_detail_urls, good_type
   </sql>
-  <select id="selectByExample" parameterType="com.yczd.api.aio.good.model.GoodCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -99,13 +99,13 @@
     delete from good
     where good_id = #{goodId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yczd.api.aio.good.model.GoodCriteria">
+  <delete id="deleteByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria">
     delete from good
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yczd.api.aio.good.model.Good">
+  <insert id="insert" parameterType="com.yczd.api.aio.good.model.entity.Good">
     <selectKey keyProperty="goodId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -116,7 +116,7 @@
       #{goodMainUrl,jdbcType=VARCHAR}, #{goodDetailUrls,jdbcType=VARCHAR}, #{goodType,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yczd.api.aio.good.model.Good">
+  <insert id="insertSelective" parameterType="com.yczd.api.aio.good.model.entity.Good">
     <selectKey keyProperty="goodId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yczd.api.aio.good.model.GoodCriteria" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultType="java.lang.Long">
     select count(*) from good
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -202,7 +202,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yczd.api.aio.good.model.Good">
+  <update id="updateByPrimaryKeySelective" parameterType="com.yczd.api.aio.good.model.entity.Good">
     update good
     <set>
       <if test="goodName != null">
@@ -223,7 +223,7 @@
     </set>
     where good_id = #{goodId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yczd.api.aio.good.model.Good">
+  <update id="updateByPrimaryKey" parameterType="com.yczd.api.aio.good.model.entity.Good">
     update good
     set good_name = #{goodName,jdbcType=VARCHAR},
       good_price = #{goodPrice,jdbcType=DECIMAL},
@@ -232,7 +232,7 @@
       good_type = #{goodType,jdbcType=VARCHAR}
     where good_id = #{goodId,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="com.yczd.api.aio.good.model.GoodCriteria" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
