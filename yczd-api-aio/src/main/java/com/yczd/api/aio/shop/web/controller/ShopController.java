@@ -5,6 +5,7 @@ import java.net.URI;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.yczd.api.aio.shop.model.entity.Shop;
+import com.yczd.api.aio.shop.model.form.ShopForm;
 import com.yczd.api.aio.shop.service.ShopService;
 
 @RestController
@@ -53,8 +55,10 @@ public class ShopController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<?> insert(@RequestBody Shop shop) {
+	public ResponseEntity<?> insert(@Validated @RequestBody ShopForm shopForm) {
+		// 使用Validator进行参数的校验
 
+		Shop shop = shopForm.entity();
 		shopService.save(shop);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(shop.getShopId())
