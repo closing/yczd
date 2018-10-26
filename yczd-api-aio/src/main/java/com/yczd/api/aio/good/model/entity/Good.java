@@ -1,4 +1,4 @@
-package com.yczd.api.aio.good.model;
+package com.yczd.api.aio.good.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
