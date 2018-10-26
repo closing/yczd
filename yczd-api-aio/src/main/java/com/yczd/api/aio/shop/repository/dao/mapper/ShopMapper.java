@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
-import com.yczd.api.aio.shop.model.Shop;
-import com.yczd.api.aio.shop.model.ShopCriteria;
+import com.yczd.api.aio.shop.model.entity.Shop;
+import com.yczd.api.aio.shop.model.entity.ShopCriteria;
 
 public interface ShopMapper {
 	long countByExample(ShopCriteria example);
