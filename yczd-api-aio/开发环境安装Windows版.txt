@@ -1,4 +1,4 @@
-源产直达开发环境安装手册
+﻿源产直达开发环境安装手册
 
 前提
 	以所有安装软件的父目录为 D:\yczd 
@@ -119,7 +119,42 @@
 
 TODO
 5.Tomcat
+	0.验证是否已经安装成功
+		定位到tomcat解压目录bin文件夹下，找到startup.bat文件，双击打开
+		如果Dos窗口最后一行显示Server startup in xxx ms表示Tomcat服务器服务启动成功(xxx是启动消耗的时间)
+		此时不要关闭Dos窗口，在浏览器地址栏输入http://localhost:8080/ （这个地方的端口号8080取决于你安装时的端口号）
+		如果页面上出现If you're seeing this, you've successfully installed Tomcat. Congratulations!则安装成功
+	1.版本号
+		取决于安装的jdk版本
+		jdk1.8的话Tomcat7或者8都可以
+	2.下载地址
+		https://tomcat.apache.org/download-80.cgi
+		https://tomcat.apache.org/download-70.cgi
+
+		Binary Distributions
+		Core:
+        	zip (pgp, sha512)
+	3.安装目录
+		D:\yczd\java\tomcat-xx(xx为版本号)		
 6.Mysql
+	0.验证安装是否成功
+		在Dos窗口输入mysql -u root -p之后输入密码，
+		如果Dos窗口出现Welcome to the MySQL monitor就进行下一步
+		再输入show databases;
+		如果显示出数据库列表的话代表MySql已经安装成功
+	1.版本号
+		建议安装5.7
+		小版本版本号则无限制
+	2.下载地址
+		https://dev.mysql.com/downloads/mysql/5.7.html#downloads
+
+		Download MySQL Installer	
+		Other Downloads:
+		Windows (x86, 32-bit), ZIP Archive
+		Windows (x86, 64-bit), ZIP Archive（根据电脑是32位还是64位进行选择下载）
+	3.安装目录
+		D:\yczd\mysql-xx\(xx为版本号)
+		
 7.SVN
 8.miniide
 9.xxxx
