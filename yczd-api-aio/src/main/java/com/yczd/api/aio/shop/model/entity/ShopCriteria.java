@@ -1,4 +1,4 @@
-package com.yczd.api.aio.shop.model;
+package com.yczd.api.aio.shop.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
