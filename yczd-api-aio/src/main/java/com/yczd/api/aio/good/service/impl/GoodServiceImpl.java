@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yczd.api.aio.good.model.Good;
+import com.yczd.api.aio.good.model.entity.Good;
 import com.yczd.api.aio.good.repository.GoodRepository;
 import com.yczd.api.aio.good.service.GoodService;
 
