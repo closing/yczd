@@ -2,7 +2,7 @@ package com.yczd.api.aio.good.service;
 
 import java.util.List;
 
-import com.yczd.api.aio.good.model.Good;
+import com.yczd.api.aio.good.model.entity.Good;
 
 public interface GoodService {
 	List<Good> findAll();
