@@ -8,9 +8,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yczd.api.aio.common.result.ResponseResultUtils;
 import com.yczd.api.aio.good.model.entity.Good;
 import com.yczd.api.aio.good.service.GoodService;
 
+/**
+ *
+ *  /v1/goods
+ *  /v1/goods?paget=&
+ *  /v1/goods/{id}
+ *  /v1/shops/{id}/goods/
+ *  /v1/shops/{shopId}/goods/{goodId}
+ *  /v1/users/{userId}/goods/
+ *  /v1/users/{userId}/goods/{goodId}
+ * @author YCZD
+ *
+ */
 @RestController
 @RequestMapping(value = "/v1/goods")
 public class GoodController {
@@ -20,7 +33,11 @@ public class GoodController {
 
 	@GetMapping()
 	public ResponseEntity<?> goods() {
-		return ResponseEntity.ok().body(goodService.findAll());
+		return ResponseEntity.ok().body(
+				ResponseResultUtils.getResponseRest(goodService.findAll())
+						.setSuccess(true)
+						.setCode(0000)
+						.setMessage("正常"));
 	}
 
 	@GetMapping(value = "/{id}")
@@ -30,6 +47,11 @@ public class GoodController {
 		// @PathVariable 不支持注解校验
 		if (!StringUtils.isNumeric(id)) {
 			// 商品ID必须是数值,如果不是数值，属于异常
+			return ResponseEntity.badRequest().body(
+					ResponseResultUtils.getResponseRest("URL错误")
+							.setSuccess(false).setCode(9001)
+							.setMessage("URL错误"));
+
 		}
 
 		Integer goodId = Integer.parseInt(id);
@@ -41,7 +63,11 @@ public class GoodController {
 		if (good == null) {
 			return ResponseEntity.notFound().build();
 		} else {
-			return ResponseEntity.ok(good);
+			return ResponseEntity.ok(
+					ResponseResultUtils.getResponseRest(good)
+							.setSuccess(true)
+							.setCode(0000)
+							.setMessage("正常"));
 		}
 
 	}
