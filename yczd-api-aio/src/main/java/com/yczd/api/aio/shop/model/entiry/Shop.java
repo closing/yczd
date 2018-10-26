@@ -1,4 +1,4 @@
-package com.yczd.api.aio.shop.model;
+package com.yczd.api.aio.shop.model.entiry;
 
 import java.io.Serializable;
 
