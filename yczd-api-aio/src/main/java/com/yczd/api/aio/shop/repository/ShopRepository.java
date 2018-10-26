@@ -2,7 +2,7 @@ package com.yczd.api.aio.shop.repository;
 
 import java.util.List;
 
-import com.yczd.api.aio.shop.model.Shop;
+import com.yczd.api.aio.shop.model.entity.Shop;
 
 public interface ShopRepository {
 	public Shop getShopById(Integer id);
