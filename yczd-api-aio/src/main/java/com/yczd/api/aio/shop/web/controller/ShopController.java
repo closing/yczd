@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.yczd.api.aio.shop.model.Shop;
+import com.yczd.api.aio.shop.model.entity.Shop;
 import com.yczd.api.aio.shop.service.ShopService;
 
 @RestController
