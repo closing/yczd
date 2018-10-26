@@ -2,7 +2,7 @@ package com.yczd.api.aio.good.repository;
 
 import java.util.List;
 
-import com.yczd.api.aio.good.model.Good;
+import com.yczd.api.aio.good.model.entity.Good;
 
 /**
  * 商品数据库操作接口类
