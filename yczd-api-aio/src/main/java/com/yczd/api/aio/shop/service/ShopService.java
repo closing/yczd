@@ -3,7 +3,7 @@ package com.yczd.api.aio.shop.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.yczd.api.aio.shop.model.Shop;
+import com.yczd.api.aio.shop.model.entity.Shop;
 
 public interface ShopService {
 	public Optional<Shop> getById(Integer id);
