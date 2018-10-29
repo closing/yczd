@@ -15,12 +15,13 @@ public class RootController {
 	public List<String> root() {
 		List<String> links = new ArrayList<>();
 
-		links.add("/v1/goods/");
-		links.add("/v1/categories/");
-		links.add("/v1/carts/");
-		links.add("/v1/orders/");
+		links.add("/v1/stations/");
+		links.add("/v1/drivers/");
 		links.add("/v1/users/");
 		links.add("/v1/shops/");
+		links.add("/v1/orders/");
+		links.add("/v1/goods/");
+		links.add("/v1/logistics/");
 
 		return links;
 
