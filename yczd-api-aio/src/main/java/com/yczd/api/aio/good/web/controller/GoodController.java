@@ -34,7 +34,7 @@ public class GoodController {
 	@GetMapping()
 	public ResponseEntity<?> goods() {
 		return ResponseEntity.ok().body(
-				ResponseResultUtils.getResponseRest(goodService.findAll())
+				ResponseResultUtils.getResponseRest(goodService.getAll())
 						.setSuccess(true)
 						.setCode(0000)
 						.setMessage("正常"));
@@ -47,17 +47,12 @@ public class GoodController {
 		// @PathVariable 不支持注解校验
 		if (!StringUtils.isNumeric(id)) {
 			// 商品ID必须是数值,如果不是数值，属于异常
-			return ResponseEntity.badRequest().body(
-					ResponseResultUtils.getResponseRest("URL错误")
-							.setSuccess(false).setCode(9001)
-							.setMessage("URL错误"));
-
 		}
 
 		Integer goodId = Integer.parseInt(id);
 
 		// 业务处理
-		Good good = goodService.findById(goodId);
+		Good good = goodService.getById(goodId);
 
 		// 返回结果
 		if (good == null) {
