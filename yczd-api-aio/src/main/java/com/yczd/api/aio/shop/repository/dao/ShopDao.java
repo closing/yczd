@@ -24,7 +24,7 @@ public class ShopDao implements ShopRepository {
 	}
 
 	@Override
-	public List<Shop> getShops() {
+	public List<Shop> getAll() {
 		return sqlSession.selectList("com.yczd.api.aio.shop.repository.dao.mapper.ShopMapper.selectAll");
 	}
 
@@ -40,12 +40,12 @@ public class ShopDao implements ShopRepository {
 
 	@Override
 	public int delete(Shop shop) {
-		return delete(shop.getShopId());
+		return deleteById(shop.getShopId());
 
 	}
 
 	@Override
-	public int delete(Integer shopId) {
+	public int deleteById(Integer shopId) {
 		return sqlSession.getMapper(ShopMapper.class).deleteByPrimaryKey(shopId);
 	}
 }
