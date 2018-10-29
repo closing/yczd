@@ -24,7 +24,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public List<Shop> getShops() {
-		List<Shop> shops = shopRepository.getShops();
+		List<Shop> shops = shopRepository.getAll();
 		return shops;
 	}
 
@@ -57,7 +57,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public int deleteById(Integer shopId) {
-		int result = shopRepository.delete(shopId);
+		int result = shopRepository.deleteById(shopId);
 		if (result != 1) {
 
 		}
