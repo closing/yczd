@@ -5,11 +5,11 @@ import java.util.List;
 import com.yczd.api.aio.good.model.entity.Good;
 
 public interface GoodService {
-	List<Good> findAll();
+	List<Good> getAll();
 
-	Good findById(Integer id);
+	Good getById(Integer id);
 
-	Good findByName(String name);
+	Good getByName(String name);
 
 	Good save(Good good);
 
