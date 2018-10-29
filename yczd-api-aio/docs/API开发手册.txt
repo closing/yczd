@@ -1,22 +1,83 @@
-源产直达API开发手册
+源产直达API开发说明
 
-数据库
+数据库Mysql
 	数据库名称:yczd_mini
-	
-1.最初生产库DbScript的导出
-	登陆云
+	以现有App数据库jn_yczd为基础构建。在此基础之上根据业务需求做变更并保留变更历史纪录
 
+小程序前端
+	待补充
 
-基本框架
+Java后台API
+1.基本框架
 Spring framework + Spring boot + Mybatis
 
-Mybatis:
-	Mapper.java
+2.java包
+	java包名称都为小写字母
+	com.yczd.api.aio为其他包的父包
+	根据不同的业务系统分配包名例如商品子系统为good
+		包名全称为com.yczd.api.aio.good
+	各子系统可按下面功能分配包名
+		web.controller
+			以RESTful形式对外暴露应用接口
+		repository
+			数据操作接口
+		repository.dao
+			数据操作接口实现类（操作数据库读写功能）
+		repository.dao.mapper
+			Mybatis Mapper Interface
+		service
+			业务处理接口，
+		service.impl
+			业务接口实现类
+		model.dto
+			组装数据库和业务处理数据返回前端
+		model.entity
+			数据库表对应实体类
+		model.form
+			用于前端向Java后台提交信息
+
+3.Controller
+	位于web.controller包下，以@RestController注解的Class
+	主要以RESTful形式对外暴露接口
+	在类上以@RequestMapping注解统一子系统url，统一加版本号v1
+	返回值统一为ResponseEntity<?>
+	可以使用HttpStatus判断结果正确与否的，尽量使用HttpStatus，业务处理结果也可以使用common包里的ResultCode
+	需要调用的业务处理类用@Autowired注解注入
+
+	RESTful接口设计可以简单的参考下面文章，详细需要阅读相关书籍
+	http://www.ruanyifeng.com/blog/2014/05/restful_api.html
+
+3.Service接口
+	位于各子系统service包下，用于定义业务处理接口
+	子包impl下为其实现类,以@Service注解标识
+	需要调用的Repository接口使用@Autowired注解注入
+
+4.Repository接口
+	位于各子系统repository包下，用于定义数据存储接口
+	子包dao下为其实现类，使用mybatis框架功能实现数据库读写操作。用@Respository注解标识
+	SqlSession用@Autowired注解注入
+	子包mapper为Mybatis Mapper Interface（Mybatis Generator生成的代码基础上修改）
+
+5.Model
+	子包dto用于把业务处理结果返回前端
+	子包entity对应数据库表（Mybatis Generator自动生成）
+	子包form用于前端向后端提交数据
+6.mapperXML
+	位于resouce下的xml文件，sql写在xml文件里
+
+
+7.用Mybatis Generator生成entity和mapper
+	resource/configuration/是生成配置文件
+	说明：配置文件没有配置好，可以单独生成后自己修改放到该放到的地方，有兴趣也可以研究下，怎样配置符合咱们的需求
+	设定文件修改后，把pom文件里的Mybatis Generator插件的executions的注释解除掉，右键单击pom.xml 选运行里的 Generat Maven Source，
+	可以自动生成model和mapper
+	model和mapper interface（java）是覆盖， mapperxml文件是在末尾追加
+	由于每次运行maven都会生成代码，所以生成后再把executions注释掉（这里也是maven的设定没有做好，有兴趣的可以解决）
+
+8.运行时的数据库连接设定在resource下的application.yml的22行
+
 
 权限认证框架使用OAuth2
-
-Restful
-
 
 启动方式
 	1.右键选中Project
