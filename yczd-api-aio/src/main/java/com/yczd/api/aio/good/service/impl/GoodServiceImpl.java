@@ -16,17 +16,17 @@ public class GoodServiceImpl implements GoodService {
 	GoodRepository goodRepository;
 
 	@Override
-	public List<Good> findAll() {
+	public List<Good> getAll() {
 		return goodRepository.findAll();
 	}
 
 	@Override
-	public Good findById(Integer id) {
+	public Good getById(Integer id) {
 		return goodRepository.findById(id);
 	}
 
 	@Override
-	public Good findByName(String name) {
+	public Good getByName(String name) {
 		// TODO
 		return goodRepository.findByName(name);
 	}
