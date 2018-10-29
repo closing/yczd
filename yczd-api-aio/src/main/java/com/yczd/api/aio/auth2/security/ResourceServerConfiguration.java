@@ -22,9 +22,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.anonymous().disable()
-				.requestMatchers().antMatchers("/v1/shops/**")
+				.requestMatchers().antMatchers("/v1/xxxx/**")
 				.and().authorizeRequests()
-				.antMatchers("/v1/shops/**").access("hasAnyRole('SHOP','ADMIN')")
+				.antMatchers("/v1/xxxx/**").access("hasAnyRole('SHOP','ADMIN')")
 				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 
 	}
