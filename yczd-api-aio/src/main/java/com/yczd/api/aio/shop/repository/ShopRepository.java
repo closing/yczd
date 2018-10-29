@@ -7,7 +7,7 @@ import com.yczd.api.aio.shop.model.entity.Shop;
 public interface ShopRepository {
 	public Shop getShopById(Integer id);
 
-	public List<Shop> getShops();
+	public List<Shop> getAll();
 
 	public int insert(Shop shop);
 
@@ -15,6 +15,6 @@ public interface ShopRepository {
 
 	public int delete(Shop shop);
 
-	public int delete(Integer shopId);
+	public int deleteById(Integer shopId);
 
 }
