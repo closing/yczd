@@ -116,9 +116,15 @@
 		https://developer.android.com/studio/
 	3.安装目录
 		D:\yczd\androidstutio
-
+7.Lombok
+	1.版本号1.18.4
+		说明：以安装时间的版本号为准
+	2.下载地址	
+		https://projectlombok.org/download
+	3.安装手册
+		参照https://projectlombok.org/setup/eclipse
+		说明:会自动安装在eclipse的目录里D:\yczd\eclipse
 TODO
-lombok
 5.Tomcat
 6.Mysql
 7.SVN
