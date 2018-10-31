@@ -2,7 +2,8 @@
 
 数据库Mysql
 	数据库名称:yczd_mini
-	以现有App数据库jn_yczd为基础构建。在此基础之上根据业务需求做变更并保留变更历史纪录
+	先执行一下resources/db/migration/mysql/v0_1_ddl_init.sql，用于验证yczd-api-aio是否能够正常运行
+	没有运行问题后以现有App数据库jn_yczd为基础构建。在此基础之上根据业务需求做变更并保留变更历史纪录
 
 小程序前端
 	待补充
