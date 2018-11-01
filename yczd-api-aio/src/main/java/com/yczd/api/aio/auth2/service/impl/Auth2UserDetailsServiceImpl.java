@@ -1,36 +1,33 @@
 package com.yczd.api.aio.auth2.service.impl;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import com.yczd.api.aio.auth2.model.Auth2User;
+import com.yczd.api.aio.auth2.model.entity.Credentials;
+import com.yczd.api.aio.auth2.repository.CredentialRepository;
+import com.yczd.api.aio.auth2.service.Auth2UserService;
 
-//@Service
-public class Auth2UserDetailsServiceImpl
-{
+@Service
+public class Auth2UserDetailsServiceImpl implements Auth2UserService {
+	@Autowired
+	CredentialRepository credentialCustomRepository;
 
-	private static Set<Auth2User> users = new HashSet<>();
-	static {
-		users.add(new Auth2User(1, "test-user1", "123451"));
-		users.add(new Auth2User(2, "test-user2", "123452"));
-		users.add(new Auth2User(3, "test-user3", "123453"));
-		users.add(new Auth2User(4, "test-user4", "123454"));
-	}
-
-//	@Override
+	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Auth2User> userWrapper = users.stream()
-				.filter((u) -> u.getUserName().equals(username))
-				.findFirst();
-		if (!userWrapper.isPresent())
-			throw new UsernameNotFoundException("there's no user founded!");
-		else
-//			return new MyUserDetails(userWrapper.get());
-			return null;
+		Credentials credentials = credentialCustomRepository.getByName(username);
+
+		if (credentials == null) {
+
+			throw new UsernameNotFoundException("User" + username + "can not be found");
+		}
+		User user = new User(credentials.getName(), credentials.getPassword(),
+				credentials.isEnabled().booleanValue(),
+				true, true, true, credentials.getAuthorities());
+
+		return user;
 	}
 
 }
