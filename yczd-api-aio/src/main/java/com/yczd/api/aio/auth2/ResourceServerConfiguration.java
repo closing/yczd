@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth2.security;
+package com.yczd.api.aio.auth2;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
