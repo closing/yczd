@@ -1,4 +1,4 @@
-package com.yczd.api.aio.auth2.security;
+package com.yczd.api.aio.auth2;
 
 //TODO Auth
 //@Configuration
