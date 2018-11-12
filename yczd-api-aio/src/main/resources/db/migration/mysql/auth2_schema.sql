@@ -38,9 +38,9 @@ CREATE TABLE credentials (
   primary key (id)
 );
 
-INSERT INTO credentials VALUES(1,b'1','oauth_admin','{noop}password','0');
-INSERT INTO credentials VALUES(2,b'1','resource_admin','{noop}password','0');
-INSERT INTO credentials  VALUES(3,b'1','user','{noop}password','0');
+INSERT INTO credentials VALUES(1,'1','oauth_admin','{noop}password','0');
+INSERT INTO credentials VALUES(2,'1','resource_admin','{noop}password','0');
+INSERT INTO credentials  VALUES(3,'1','user','{noop}password','0');
 
 drop table if exists credentials_authorities;
 CREATE TABLE credentials_authorities (
