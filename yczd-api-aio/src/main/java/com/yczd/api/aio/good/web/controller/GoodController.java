@@ -49,10 +49,8 @@ public class GoodController {
 			// 商品ID必须是数值,如果不是数值，属于异常
 		}
 
-		Integer goodId = Integer.parseInt(id);
-
 		// 业务处理
-		Good good = goodService.getById(goodId);
+		Good good = goodService.getById(id);
 
 		// 返回结果
 		if (good == null) {
