@@ -12,7 +12,7 @@ import com.yczd.api.aio.good.model.entity.Good;
 public interface GoodRepository {
 	public List<Good> findAll();
 
-	public Good findById(Integer id);
+	public Good findById(String id);
 
 	public Good findByName(String name);
 
@@ -20,7 +20,7 @@ public interface GoodRepository {
 
 	public void update(Good good);
 
-	public void deleteById( Integer id);
+	public void deleteById( String id);
 
 	public void delete(Good good);
 }
