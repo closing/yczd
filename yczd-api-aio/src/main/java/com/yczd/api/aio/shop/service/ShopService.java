@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.yczd.api.aio.shop.model.entity.Shop;
 
 public interface ShopService {
-	public Optional<Shop> getById(Integer id);
+	public Optional<Shop> getById(String id);
 
 	public List<Shop> getShops();
 
@@ -14,7 +14,7 @@ public interface ShopService {
 
 	public int delete(Shop shop);
 
-	public int deleteById(Integer shopId);
+	public int deleteById(String shopId);
 
-	public boolean exist(Integer shopId);
+	public boolean exist(String shopId);
 }
