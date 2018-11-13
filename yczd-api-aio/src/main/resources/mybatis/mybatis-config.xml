@@ -12,6 +12,8 @@
 		<mapper
 			resource="mybatis/com/yczd/api/aio/shop/dao/mapper/ShopMapper.xml" />
 		<mapper
+			resource="mybatis/com/yczd/api/aio/user/dao/mapper/UserMapper.xml" />
+		<mapper
 			resource="mybatis/com/yczd/api/aio/auth2/dao/mapper/AuthorityMapper.xml" />
 		<mapper
 			resource="mybatis/com/yczd/api/aio/auth2/dao/mapper/CredentialsMapper.xml" />
