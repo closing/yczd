@@ -2,12 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yczd.api.aio.good.repository.dao.mapper.GoodMapper">
   <resultMap id="BaseResultMap" type="com.yczd.api.aio.good.model.entity.Good">
-    <id column="good_id" jdbcType="INTEGER" property="goodId" />
-    <result column="good_name" jdbcType="VARCHAR" property="goodName" />
-    <result column="good_price" jdbcType="DECIMAL" property="goodPrice" />
-    <result column="good_main_url" jdbcType="VARCHAR" property="goodMainUrl" />
-    <result column="good_detail_urls" jdbcType="VARCHAR" property="goodDetailUrls" />
-    <result column="good_type" jdbcType="VARCHAR" property="goodType" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+    <result column="shop_id" jdbcType="VARCHAR" property="shopId" />
+    <result column="users_id" jdbcType="VARCHAR" property="usersId" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="freight" jdbcType="DOUBLE" property="freight" />
+    <result column="num" jdbcType="DOUBLE" property="num" />
+    <result column="pro_grade" jdbcType="INTEGER" property="proGrade" />
+    <result column="quality" jdbcType="INTEGER" property="quality" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="cover_image" jdbcType="VARCHAR" property="coverImage" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="supply_num" jdbcType="DOUBLE" property="supplyNum" />
+    <result column="is_emergency" jdbcType="INTEGER" property="isEmergency" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="show_time" jdbcType="VARCHAR" property="showTime" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="station_id" jdbcType="VARCHAR" property="stationId" />
+    <result column="station_name" jdbcType="VARCHAR" property="stationName" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="shebei_code" jdbcType="VARCHAR" property="shebeiCode" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.yczd.api.aio.good.model.entity.Good">
+    <result column="describes" jdbcType="LONGVARCHAR" property="describes" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +90,22 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    good_id, good_name, good_price, good_main_url, good_detail_urls, good_type
+    id, name, type_id, type_code, shop_id, users_id, price, unit, freight, num, pro_grade,
+    quality, video_url, cover_image, intro, supply_num, is_emergency, is_show, show_time,
+    shop_name, station_id, station_name, state, shebei_code, grade
   </sql>
-  <select id="selectByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    describes
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from good
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,161 +113,544 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yc_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List" />
-    from good
-    where good_id = #{goodId,jdbcType=INTEGER}
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_product
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List" />
-    from good
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_product
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from good
-    where good_id = #{goodId,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from yc_product
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria">
-    delete from good
+    delete from yc_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.yczd.api.aio.good.model.entity.Good">
-    <selectKey keyProperty="goodId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into good (good_id, good_name, good_price,
-      good_main_url, good_detail_urls, good_type
-      )
-    values (#{goodId,jdbcType=INTEGER}, #{goodName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DECIMAL},
-      #{goodMainUrl,jdbcType=VARCHAR}, #{goodDetailUrls,jdbcType=VARCHAR}, #{goodType,jdbcType=VARCHAR}
-      )
+    insert into yc_product (id, name, type_id,
+      type_code, shop_id, users_id,
+      price, unit, freight,
+      num, pro_grade, quality,
+      video_url, cover_image, intro,
+      supply_num, is_emergency, is_show,
+      show_time, shop_name, station_id,
+      station_name, state, shebei_code,
+      grade, describes)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR},
+      #{typeCode,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, #{usersId,jdbcType=VARCHAR},
+      #{price,jdbcType=DOUBLE}, #{unit,jdbcType=VARCHAR}, #{freight,jdbcType=DOUBLE},
+      #{num,jdbcType=DOUBLE}, #{proGrade,jdbcType=INTEGER}, #{quality,jdbcType=INTEGER},
+      #{videoUrl,jdbcType=VARCHAR}, #{coverImage,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR},
+      #{supplyNum,jdbcType=DOUBLE}, #{isEmergency,jdbcType=INTEGER}, #{isShow,jdbcType=INTEGER},
+      #{showTime,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{stationId,jdbcType=VARCHAR},
+      #{stationName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{shebeiCode,jdbcType=VARCHAR},
+      #{grade,jdbcType=VARCHAR}, #{describes,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yczd.api.aio.good.model.entity.Good">
-    <selectKey keyProperty="goodId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into good
+    insert into yc_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      good_id,
-      <if test="goodName != null">
-        good_name,
+      <if test="id != null">
+        id,
       </if>
-      <if test="goodPrice != null">
-        good_price,
+      <if test="name != null">
+        name,
       </if>
-      <if test="goodMainUrl != null">
-        good_main_url,
+      <if test="typeId != null">
+        type_id,
       </if>
-      <if test="goodDetailUrls != null">
-        good_detail_urls,
+      <if test="typeCode != null">
+        type_code,
       </if>
-      <if test="goodType != null">
-        good_type,
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="usersId != null">
+        users_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="freight != null">
+        freight,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="proGrade != null">
+        pro_grade,
+      </if>
+      <if test="quality != null">
+        quality,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="coverImage != null">
+        cover_image,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="supplyNum != null">
+        supply_num,
+      </if>
+      <if test="isEmergency != null">
+        is_emergency,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="showTime != null">
+        show_time,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="stationId != null">
+        station_id,
+      </if>
+      <if test="stationName != null">
+        station_name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="shebeiCode != null">
+        shebei_code,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="describes != null">
+        describes,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{goodId,jdbcType=INTEGER},
-      <if test="goodName != null">
-        #{goodName,jdbcType=VARCHAR},
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="goodPrice != null">
-        #{goodPrice,jdbcType=DECIMAL},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="goodMainUrl != null">
-        #{goodMainUrl,jdbcType=VARCHAR},
+      <if test="typeId != null">
+        #{typeId,jdbcType=VARCHAR},
       </if>
-      <if test="goodDetailUrls != null">
-        #{goodDetailUrls,jdbcType=VARCHAR},
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR},
       </if>
-      <if test="goodType != null">
-        #{goodType,jdbcType=VARCHAR},
+      <if test="shopId != null">
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+      <if test="usersId != null">
+        #{usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null">
+        #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="proGrade != null">
+        #{proGrade,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null">
+        #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImage != null">
+        #{coverImage,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyNum != null">
+        #{supplyNum,jdbcType=DOUBLE},
+      </if>
+      <if test="isEmergency != null">
+        #{isEmergency,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="showTime != null">
+        #{showTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationName != null">
+        #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="shebeiCode != null">
+        #{shebeiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null">
+        #{describes,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultType="java.lang.Long">
-    select count(*) from good
+    select count(*) from yc_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update good
+    update yc_product
     <set>
-      <if test="record.goodId != null">
-        good_id = #{record.goodId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodName != null">
-        good_name = #{record.goodName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodPrice != null">
-        good_price = #{record.goodPrice,jdbcType=DECIMAL},
+      <if test="record.typeId != null">
+        type_id = #{record.typeId,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodMainUrl != null">
-        good_main_url = #{record.goodMainUrl,jdbcType=VARCHAR},
+      <if test="record.typeCode != null">
+        type_code = #{record.typeCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodDetailUrls != null">
-        good_detail_urls = #{record.goodDetailUrls,jdbcType=VARCHAR},
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=VARCHAR},
       </if>
-      <if test="record.goodType != null">
-        good_type = #{record.goodType,jdbcType=VARCHAR},
+      <if test="record.usersId != null">
+        users_id = #{record.usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freight != null">
+        freight = #{record.freight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.num != null">
+        num = #{record.num,jdbcType=DOUBLE},
+      </if>
+      <if test="record.proGrade != null">
+        pro_grade = #{record.proGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.quality != null">
+        quality = #{record.quality,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoUrl != null">
+        video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coverImage != null">
+        cover_image = #{record.coverImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null">
+        intro = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supplyNum != null">
+        supply_num = #{record.supplyNum,jdbcType=DOUBLE},
+      </if>
+      <if test="record.isEmergency != null">
+        is_emergency = #{record.isEmergency,jdbcType=INTEGER},
+      </if>
+      <if test="record.isShow != null">
+        is_show = #{record.isShow,jdbcType=INTEGER},
+      </if>
+      <if test="record.showTime != null">
+        show_time = #{record.showTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopName != null">
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stationId != null">
+        station_id = #{record.stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stationName != null">
+        station_name = #{record.stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.shebeiCode != null">
+        shebei_code = #{record.shebeiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.describes != null">
+        describes = #{record.describes,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update yc_product
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=VARCHAR},
+      type_code = #{record.typeCode,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      users_id = #{record.usersId,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DOUBLE},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      freight = #{record.freight,jdbcType=DOUBLE},
+      num = #{record.num,jdbcType=DOUBLE},
+      pro_grade = #{record.proGrade,jdbcType=INTEGER},
+      quality = #{record.quality,jdbcType=INTEGER},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      cover_image = #{record.coverImage,jdbcType=VARCHAR},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      supply_num = #{record.supplyNum,jdbcType=DOUBLE},
+      is_emergency = #{record.isEmergency,jdbcType=INTEGER},
+      is_show = #{record.isShow,jdbcType=INTEGER},
+      show_time = #{record.showTime,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      station_id = #{record.stationId,jdbcType=VARCHAR},
+      station_name = #{record.stationName,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      shebei_code = #{record.shebeiCode,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=VARCHAR},
+      describes = #{record.describes,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update good
-    set good_id = #{record.goodId,jdbcType=INTEGER},
-      good_name = #{record.goodName,jdbcType=VARCHAR},
-      good_price = #{record.goodPrice,jdbcType=DECIMAL},
-      good_main_url = #{record.goodMainUrl,jdbcType=VARCHAR},
-      good_detail_urls = #{record.goodDetailUrls,jdbcType=VARCHAR},
-      good_type = #{record.goodType,jdbcType=VARCHAR}
+    update yc_product
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=VARCHAR},
+      type_code = #{record.typeCode,jdbcType=VARCHAR},
+      shop_id = #{record.shopId,jdbcType=VARCHAR},
+      users_id = #{record.usersId,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DOUBLE},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      freight = #{record.freight,jdbcType=DOUBLE},
+      num = #{record.num,jdbcType=DOUBLE},
+      pro_grade = #{record.proGrade,jdbcType=INTEGER},
+      quality = #{record.quality,jdbcType=INTEGER},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      cover_image = #{record.coverImage,jdbcType=VARCHAR},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      supply_num = #{record.supplyNum,jdbcType=DOUBLE},
+      is_emergency = #{record.isEmergency,jdbcType=INTEGER},
+      is_show = #{record.isShow,jdbcType=INTEGER},
+      show_time = #{record.showTime,jdbcType=VARCHAR},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      station_id = #{record.stationId,jdbcType=VARCHAR},
+      station_name = #{record.stationName,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      shebei_code = #{record.shebeiCode,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.yczd.api.aio.good.model.entity.Good">
-    update good
+    update yc_product
     <set>
-      <if test="goodName != null">
-        good_name = #{goodName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="goodPrice != null">
-        good_price = #{goodPrice,jdbcType=DECIMAL},
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=VARCHAR},
       </if>
-      <if test="goodMainUrl != null">
-        good_main_url = #{goodMainUrl,jdbcType=VARCHAR},
+      <if test="typeCode != null">
+        type_code = #{typeCode,jdbcType=VARCHAR},
       </if>
-      <if test="goodDetailUrls != null">
-        good_detail_urls = #{goodDetailUrls,jdbcType=VARCHAR},
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=VARCHAR},
       </if>
-      <if test="goodType != null">
-        good_type = #{goodType,jdbcType=VARCHAR},
+      <if test="usersId != null">
+        users_id = #{usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null">
+        freight = #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="proGrade != null">
+        pro_grade = #{proGrade,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null">
+        quality = #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImage != null">
+        cover_image = #{coverImage,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyNum != null">
+        supply_num = #{supplyNum,jdbcType=DOUBLE},
+      </if>
+      <if test="isEmergency != null">
+        is_emergency = #{isEmergency,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="showTime != null">
+        show_time = #{showTime,jdbcType=VARCHAR},
+      </if>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null">
+        station_id = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="stationName != null">
+        station_name = #{stationName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="shebeiCode != null">
+        shebei_code = #{shebeiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null">
+        describes = #{describes,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where good_id = #{goodId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yczd.api.aio.good.model.entity.Good">
+    update yc_product
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=VARCHAR},
+      type_code = #{typeCode,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      users_id = #{usersId,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      unit = #{unit,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=DOUBLE},
+      num = #{num,jdbcType=DOUBLE},
+      pro_grade = #{proGrade,jdbcType=INTEGER},
+      quality = #{quality,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      cover_image = #{coverImage,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      supply_num = #{supplyNum,jdbcType=DOUBLE},
+      is_emergency = #{isEmergency,jdbcType=INTEGER},
+      is_show = #{isShow,jdbcType=INTEGER},
+      show_time = #{showTime,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      station_id = #{stationId,jdbcType=VARCHAR},
+      station_name = #{stationName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      shebei_code = #{shebeiCode,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yczd.api.aio.good.model.entity.Good">
-    update good
-    set good_name = #{goodName,jdbcType=VARCHAR},
-      good_price = #{goodPrice,jdbcType=DECIMAL},
-      good_main_url = #{goodMainUrl,jdbcType=VARCHAR},
-      good_detail_urls = #{goodDetailUrls,jdbcType=VARCHAR},
-      good_type = #{goodType,jdbcType=VARCHAR}
-    where good_id = #{goodId,jdbcType=INTEGER}
+    update yc_product
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=VARCHAR},
+      type_code = #{typeCode,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=VARCHAR},
+      users_id = #{usersId,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      unit = #{unit,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=DOUBLE},
+      num = #{num,jdbcType=DOUBLE},
+      pro_grade = #{proGrade,jdbcType=INTEGER},
+      quality = #{quality,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      cover_image = #{coverImage,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      supply_num = #{supplyNum,jdbcType=DOUBLE},
+      is_emergency = #{isEmergency,jdbcType=INTEGER},
+      is_show = #{isShow,jdbcType=INTEGER},
+      show_time = #{showTime,jdbcType=VARCHAR},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      station_id = #{stationId,jdbcType=VARCHAR},
+      station_name = #{stationName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      shebei_code = #{shebeiCode,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExampleWithRowbounds" parameterType="com.yczd.api.aio.good.model.entity.GoodCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from good
+    from yc_product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
