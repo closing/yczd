@@ -2,8 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yczd.api.aio.shop.repository.dao.mapper.ShopMapper">
   <resultMap id="BaseResultMap" type="com.yczd.api.aio.shop.model.entity.Shop">
-    <id column="shop_id" jdbcType="INTEGER" property="shopId" />
-    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province_id" jdbcType="VARCHAR" property="provinceId" />
+    <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    <result column="county_id" jdbcType="VARCHAR" property="countyId" />
+    <result column="province_name" jdbcType="VARCHAR" property="provinceName" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="county_name" jdbcType="VARCHAR" property="countyName" />
+    <result column="street_id" jdbcType="VARCHAR" property="streetId" />
+    <result column="street_name" jdbcType="VARCHAR" property="streetName" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="ss_id" jdbcType="VARCHAR" property="ssId" />
+    <result column="mapx" jdbcType="DOUBLE" property="mapx" />
+    <result column="mapy" jdbcType="DOUBLE" property="mapy" />
+    <result column="shopkeeper_name" jdbcType="VARCHAR" property="shopkeeperName" />
+    <result column="shopkeeper_icon" jdbcType="VARCHAR" property="shopkeeperIcon" />
+    <result column="shop_address" jdbcType="VARCHAR" property="shopAddress" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+    <result column="business_license_positive" jdbcType="VARCHAR" property="businessLicensePositive" />
+    <result column="business_license_side" jdbcType="VARCHAR" property="businessLicenseSide" />
+    <result column="users_id" jdbcType="VARCHAR" property="usersId" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="cus_tel" jdbcType="VARCHAR" property="cusTel" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
+    <result column="emergency_status" jdbcType="INTEGER" property="emergencyStatus" />
+    <result column="sales_volume" jdbcType="DOUBLE" property="salesVolume" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="card_no_f" jdbcType="VARCHAR" property="cardNoF" />
+    <result column="bank_url" jdbcType="VARCHAR" property="bankUrl" />
+    <result column="taxpayer_qualification" jdbcType="VARCHAR" property="taxpayerQualification" />
+    <result column="trademark_registration" jdbcType="VARCHAR" property="trademarkRegistration" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.yczd.api.aio.shop.model.entity.Shop">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,15 +98,24 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    shop_id, shop_name
+    id, name, province_id, city_id, county_id, province_name, city_name, county_name,
+    street_id, street_name, state, ss_id, mapx, mapy, shopkeeper_name, shopkeeper_icon,
+    shop_address, email, card_no, business_license_positive, business_license_side, users_id,
+    createtime, status, cus_tel, grade, emergency_status, sales_volume, type, card_no_f,
+    bank_url, taxpayer_qualification, trademark_registration
   </sql>
-  <select id="selectByExample" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultMap="BaseResultMap">
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shop
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -80,104 +123,678 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shop
+    from yc_shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List" />
-    from shop
-    where shop_id = #{shopId,jdbcType=INTEGER}
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_shop
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from shop
-    where shop_id = #{shopId,jdbcType=INTEGER}
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_shop
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from yc_shop
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria">
-    delete from shop
+    delete from yc_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.yczd.api.aio.shop.model.entity.Shop">
-    <selectKey keyProperty="shopId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into shop (shop_id, shop_name)
-    values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR})
+    insert into yc_shop (id, name, province_id,
+      city_id, county_id, province_name,
+      city_name, county_name, street_id,
+      street_name, state, ss_id,
+      mapx, mapy, shopkeeper_name,
+      shopkeeper_icon, shop_address, email,
+      card_no, business_license_positive, business_license_side,
+      users_id, createtime, status,
+      cus_tel, grade, emergency_status,
+      sales_volume, type, card_no_f,
+      bank_url, taxpayer_qualification, trademark_registration,
+      content)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{provinceId,jdbcType=VARCHAR},
+      #{cityId,jdbcType=VARCHAR}, #{countyId,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR},
+      #{cityName,jdbcType=VARCHAR}, #{countyName,jdbcType=VARCHAR}, #{streetId,jdbcType=VARCHAR},
+      #{streetName,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{ssId,jdbcType=VARCHAR},
+      #{mapx,jdbcType=DOUBLE}, #{mapy,jdbcType=DOUBLE}, #{shopkeeperName,jdbcType=VARCHAR},
+      #{shopkeeperIcon,jdbcType=VARCHAR}, #{shopAddress,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{cardNo,jdbcType=VARCHAR}, #{businessLicensePositive,jdbcType=VARCHAR}, #{businessLicenseSide,jdbcType=VARCHAR},
+      #{usersId,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{cusTel,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, #{emergencyStatus,jdbcType=INTEGER},
+      #{salesVolume,jdbcType=DOUBLE}, #{type,jdbcType=INTEGER}, #{cardNoF,jdbcType=VARCHAR},
+      #{bankUrl,jdbcType=VARCHAR}, #{taxpayerQualification,jdbcType=VARCHAR}, #{trademarkRegistration,jdbcType=VARCHAR},
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yczd.api.aio.shop.model.entity.Shop">
-    <selectKey keyProperty="shopId" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into shop
+    insert into yc_shop
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      shop_id,
-      <if test="shopName != null">
-        shop_name,
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="provinceId != null">
+        province_id,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="countyId != null">
+        county_id,
+      </if>
+      <if test="provinceName != null">
+        province_name,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="countyName != null">
+        county_name,
+      </if>
+      <if test="streetId != null">
+        street_id,
+      </if>
+      <if test="streetName != null">
+        street_name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="ssId != null">
+        ss_id,
+      </if>
+      <if test="mapx != null">
+        mapx,
+      </if>
+      <if test="mapy != null">
+        mapy,
+      </if>
+      <if test="shopkeeperName != null">
+        shopkeeper_name,
+      </if>
+      <if test="shopkeeperIcon != null">
+        shopkeeper_icon,
+      </if>
+      <if test="shopAddress != null">
+        shop_address,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="cardNo != null">
+        card_no,
+      </if>
+      <if test="businessLicensePositive != null">
+        business_license_positive,
+      </if>
+      <if test="businessLicenseSide != null">
+        business_license_side,
+      </if>
+      <if test="usersId != null">
+        users_id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="cusTel != null">
+        cus_tel,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="emergencyStatus != null">
+        emergency_status,
+      </if>
+      <if test="salesVolume != null">
+        sales_volume,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="cardNoF != null">
+        card_no_f,
+      </if>
+      <if test="bankUrl != null">
+        bank_url,
+      </if>
+      <if test="taxpayerQualification != null">
+        taxpayer_qualification,
+      </if>
+      <if test="trademarkRegistration != null">
+        trademark_registration,
+      </if>
+      <if test="content != null">
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      #{shopId,jdbcType=INTEGER},
-      <if test="shopName != null">
-        #{shopName,jdbcType=VARCHAR},
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null">
+        #{streetId,jdbcType=VARCHAR},
+      </if>
+      <if test="streetName != null">
+        #{streetName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="ssId != null">
+        #{ssId,jdbcType=VARCHAR},
+      </if>
+      <if test="mapx != null">
+        #{mapx,jdbcType=DOUBLE},
+      </if>
+      <if test="mapy != null">
+        #{mapy,jdbcType=DOUBLE},
+      </if>
+      <if test="shopkeeperName != null">
+        #{shopkeeperName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopkeeperIcon != null">
+        #{shopkeeperIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicensePositive != null">
+        #{businessLicensePositive,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseSide != null">
+        #{businessLicenseSide,jdbcType=VARCHAR},
+      </if>
+      <if test="usersId != null">
+        #{usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cusTel != null">
+        #{cusTel,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyStatus != null">
+        #{emergencyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null">
+        #{salesVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="cardNoF != null">
+        #{cardNoF,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUrl != null">
+        #{bankUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerQualification != null">
+        #{taxpayerQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="trademarkRegistration != null">
+        #{trademarkRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultType="java.lang.Long">
-    select count(*) from shop
+    select count(*) from yc_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update shop
+    update yc_shop
     <set>
-      <if test="record.shopId != null">
-        shop_id = #{record.shopId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.shopName != null">
-        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceId != null">
+        province_id = #{record.provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityId != null">
+        city_id = #{record.cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countyId != null">
+        county_id = #{record.countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.provinceName != null">
+        province_name = #{record.provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityName != null">
+        city_name = #{record.cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.countyName != null">
+        county_name = #{record.countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.streetId != null">
+        street_id = #{record.streetId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.streetName != null">
+        street_name = #{record.streetName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.ssId != null">
+        ss_id = #{record.ssId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mapx != null">
+        mapx = #{record.mapx,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mapy != null">
+        mapy = #{record.mapy,jdbcType=DOUBLE},
+      </if>
+      <if test="record.shopkeeperName != null">
+        shopkeeper_name = #{record.shopkeeperName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopkeeperIcon != null">
+        shopkeeper_icon = #{record.shopkeeperIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopAddress != null">
+        shop_address = #{record.shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardNo != null">
+        card_no = #{record.cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessLicensePositive != null">
+        business_license_positive = #{record.businessLicensePositive,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessLicenseSide != null">
+        business_license_side = #{record.businessLicenseSide,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usersId != null">
+        users_id = #{record.usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.cusTel != null">
+        cus_tel = #{record.cusTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.emergencyStatus != null">
+        emergency_status = #{record.emergencyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.salesVolume != null">
+        sales_volume = #{record.salesVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.cardNoF != null">
+        card_no_f = #{record.cardNoF,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankUrl != null">
+        bank_url = #{record.bankUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxpayerQualification != null">
+        taxpayer_qualification = #{record.taxpayerQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trademarkRegistration != null">
+        trademark_registration = #{record.trademarkRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update yc_shop
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      province_id = #{record.provinceId,jdbcType=VARCHAR},
+      city_id = #{record.cityId,jdbcType=VARCHAR},
+      county_id = #{record.countyId,jdbcType=VARCHAR},
+      province_name = #{record.provinceName,jdbcType=VARCHAR},
+      city_name = #{record.cityName,jdbcType=VARCHAR},
+      county_name = #{record.countyName,jdbcType=VARCHAR},
+      street_id = #{record.streetId,jdbcType=VARCHAR},
+      street_name = #{record.streetName,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      ss_id = #{record.ssId,jdbcType=VARCHAR},
+      mapx = #{record.mapx,jdbcType=DOUBLE},
+      mapy = #{record.mapy,jdbcType=DOUBLE},
+      shopkeeper_name = #{record.shopkeeperName,jdbcType=VARCHAR},
+      shopkeeper_icon = #{record.shopkeeperIcon,jdbcType=VARCHAR},
+      shop_address = #{record.shopAddress,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      card_no = #{record.cardNo,jdbcType=VARCHAR},
+      business_license_positive = #{record.businessLicensePositive,jdbcType=VARCHAR},
+      business_license_side = #{record.businessLicenseSide,jdbcType=VARCHAR},
+      users_id = #{record.usersId,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      cus_tel = #{record.cusTel,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      emergency_status = #{record.emergencyStatus,jdbcType=INTEGER},
+      sales_volume = #{record.salesVolume,jdbcType=DOUBLE},
+      type = #{record.type,jdbcType=INTEGER},
+      card_no_f = #{record.cardNoF,jdbcType=VARCHAR},
+      bank_url = #{record.bankUrl,jdbcType=VARCHAR},
+      taxpayer_qualification = #{record.taxpayerQualification,jdbcType=VARCHAR},
+      trademark_registration = #{record.trademarkRegistration,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update shop
-    set shop_id = #{record.shopId,jdbcType=INTEGER},
-      shop_name = #{record.shopName,jdbcType=VARCHAR}
+    update yc_shop
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      province_id = #{record.provinceId,jdbcType=VARCHAR},
+      city_id = #{record.cityId,jdbcType=VARCHAR},
+      county_id = #{record.countyId,jdbcType=VARCHAR},
+      province_name = #{record.provinceName,jdbcType=VARCHAR},
+      city_name = #{record.cityName,jdbcType=VARCHAR},
+      county_name = #{record.countyName,jdbcType=VARCHAR},
+      street_id = #{record.streetId,jdbcType=VARCHAR},
+      street_name = #{record.streetName,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER},
+      ss_id = #{record.ssId,jdbcType=VARCHAR},
+      mapx = #{record.mapx,jdbcType=DOUBLE},
+      mapy = #{record.mapy,jdbcType=DOUBLE},
+      shopkeeper_name = #{record.shopkeeperName,jdbcType=VARCHAR},
+      shopkeeper_icon = #{record.shopkeeperIcon,jdbcType=VARCHAR},
+      shop_address = #{record.shopAddress,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      card_no = #{record.cardNo,jdbcType=VARCHAR},
+      business_license_positive = #{record.businessLicensePositive,jdbcType=VARCHAR},
+      business_license_side = #{record.businessLicenseSide,jdbcType=VARCHAR},
+      users_id = #{record.usersId,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      cus_tel = #{record.cusTel,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      emergency_status = #{record.emergencyStatus,jdbcType=INTEGER},
+      sales_volume = #{record.salesVolume,jdbcType=DOUBLE},
+      type = #{record.type,jdbcType=INTEGER},
+      card_no_f = #{record.cardNoF,jdbcType=VARCHAR},
+      bank_url = #{record.bankUrl,jdbcType=VARCHAR},
+      taxpayer_qualification = #{record.taxpayerQualification,jdbcType=VARCHAR},
+      trademark_registration = #{record.trademarkRegistration,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.yczd.api.aio.shop.model.entity.Shop">
-    update shop
+    update yc_shop
     <set>
-      <if test="shopName != null">
-        shop_name = #{shopName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceId != null">
+        province_id = #{provinceId,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        county_name = #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="streetId != null">
+        street_id = #{streetId,jdbcType=VARCHAR},
+      </if>
+      <if test="streetName != null">
+        street_name = #{streetName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="ssId != null">
+        ss_id = #{ssId,jdbcType=VARCHAR},
+      </if>
+      <if test="mapx != null">
+        mapx = #{mapx,jdbcType=DOUBLE},
+      </if>
+      <if test="mapy != null">
+        mapy = #{mapy,jdbcType=DOUBLE},
+      </if>
+      <if test="shopkeeperName != null">
+        shopkeeper_name = #{shopkeeperName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopkeeperIcon != null">
+        shopkeeper_icon = #{shopkeeperIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        shop_address = #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicensePositive != null">
+        business_license_positive = #{businessLicensePositive,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseSide != null">
+        business_license_side = #{businessLicenseSide,jdbcType=VARCHAR},
+      </if>
+      <if test="usersId != null">
+        users_id = #{usersId,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cusTel != null">
+        cus_tel = #{cusTel,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyStatus != null">
+        emergency_status = #{emergencyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="salesVolume != null">
+        sales_volume = #{salesVolume,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="cardNoF != null">
+        card_no_f = #{cardNoF,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUrl != null">
+        bank_url = #{bankUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerQualification != null">
+        taxpayer_qualification = #{taxpayerQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="trademarkRegistration != null">
+        trademark_registration = #{trademarkRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where shop_id = #{shopId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yczd.api.aio.shop.model.entity.Shop">
+    update yc_shop
+    set name = #{name,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      county_name = #{countyName,jdbcType=VARCHAR},
+      street_id = #{streetId,jdbcType=VARCHAR},
+      street_name = #{streetName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      ss_id = #{ssId,jdbcType=VARCHAR},
+      mapx = #{mapx,jdbcType=DOUBLE},
+      mapy = #{mapy,jdbcType=DOUBLE},
+      shopkeeper_name = #{shopkeeperName,jdbcType=VARCHAR},
+      shopkeeper_icon = #{shopkeeperIcon,jdbcType=VARCHAR},
+      shop_address = #{shopAddress,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      business_license_positive = #{businessLicensePositive,jdbcType=VARCHAR},
+      business_license_side = #{businessLicenseSide,jdbcType=VARCHAR},
+      users_id = #{usersId,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      cus_tel = #{cusTel,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      emergency_status = #{emergencyStatus,jdbcType=INTEGER},
+      sales_volume = #{salesVolume,jdbcType=DOUBLE},
+      type = #{type,jdbcType=INTEGER},
+      card_no_f = #{cardNoF,jdbcType=VARCHAR},
+      bank_url = #{bankUrl,jdbcType=VARCHAR},
+      taxpayer_qualification = #{taxpayerQualification,jdbcType=VARCHAR},
+      trademark_registration = #{trademarkRegistration,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yczd.api.aio.shop.model.entity.Shop">
-    update shop
-    set shop_name = #{shopName,jdbcType=VARCHAR}
-    where shop_id = #{shopId,jdbcType=INTEGER}
+    update yc_shop
+    set name = #{name,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      county_id = #{countyId,jdbcType=VARCHAR},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      county_name = #{countyName,jdbcType=VARCHAR},
+      street_id = #{streetId,jdbcType=VARCHAR},
+      street_name = #{streetName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      ss_id = #{ssId,jdbcType=VARCHAR},
+      mapx = #{mapx,jdbcType=DOUBLE},
+      mapy = #{mapy,jdbcType=DOUBLE},
+      shopkeeper_name = #{shopkeeperName,jdbcType=VARCHAR},
+      shopkeeper_icon = #{shopkeeperIcon,jdbcType=VARCHAR},
+      shop_address = #{shopAddress,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      business_license_positive = #{businessLicensePositive,jdbcType=VARCHAR},
+      business_license_side = #{businessLicenseSide,jdbcType=VARCHAR},
+      users_id = #{usersId,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      cus_tel = #{cusTel,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      emergency_status = #{emergencyStatus,jdbcType=INTEGER},
+      sales_volume = #{salesVolume,jdbcType=DOUBLE},
+      type = #{type,jdbcType=INTEGER},
+      card_no_f = #{cardNoF,jdbcType=VARCHAR},
+      bank_url = #{bankUrl,jdbcType=VARCHAR},
+      taxpayer_qualification = #{taxpayerQualification,jdbcType=VARCHAR},
+      trademark_registration = #{trademarkRegistration,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectByExampleWithBLOBsWithRowbounds" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yc_shop
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExampleWithRowbounds" parameterType="com.yczd.api.aio.shop.model.entity.ShopCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shop
+    from yc_shop
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
