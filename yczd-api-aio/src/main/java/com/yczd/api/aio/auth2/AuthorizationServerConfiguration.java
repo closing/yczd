@@ -29,11 +29,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	private static final String YCZD_REALM = "YCZD_OAUTH_REALM";
 
 	@Bean
-	@ConfigurationProperties(prefix = "yczd.auth2.datasource")
+	//@ConfigurationProperties(prefix = "yczd.auth2.datasource")
 	public DataSource auth2DataSource() {
 		return DataSourceBuilder.create()
-//				.driverClassName("com.mysql.jdbc.Driver")
-//				.url("jdbc:mysql://10.207.30.152:3306/yczd_mini").password("admin").username("root")
+				.driverClassName("com.mysql.jdbc.Driver")
+				.url("jdbc:mysql://localhost:3306/yczd_mini").password("admin").username("root")
 				.build();
 	}
 
