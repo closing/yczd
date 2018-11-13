@@ -21,7 +21,7 @@ public class GoodServiceImpl implements GoodService {
 	}
 
 	@Override
-	public Good getById(Integer id) {
+	public Good getById(String id) {
 		return goodRepository.findById(id);
 	}
 
@@ -34,9 +34,8 @@ public class GoodServiceImpl implements GoodService {
 	@Override
 	public Good save(Good good) {
 		// TODO
-		if (good.getGoodId() == null) {
-			Integer id = goodRepository.insert(good);
-			good.setGoodId(id);
+		if (good.getId() == null) {
+			goodRepository.insert(good);
 		} else {
 
 		}
@@ -49,7 +48,7 @@ public class GoodServiceImpl implements GoodService {
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(String id) {
 		// TODO
 
 	}
