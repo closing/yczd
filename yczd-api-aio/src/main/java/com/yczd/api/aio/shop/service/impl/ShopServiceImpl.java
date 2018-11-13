@@ -17,7 +17,7 @@ public class ShopServiceImpl implements ShopService {
 	ShopRepository shopRepository;
 
 	@Override
-	public Optional<Shop> getById(Integer id) {
+	public Optional<Shop> getById(String id) {
 
 		return Optional.ofNullable(shopRepository.getShopById(id));
 	}
@@ -31,7 +31,7 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public Shop save(Shop shop) {
 
-		if (shop.getShopId() == null) {
+		if (shop.getId() == null) {
 			int result = shopRepository.insert(shop);
 			if (result != 1) {
 				//
@@ -56,7 +56,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public int deleteById(Integer shopId) {
+	public int deleteById(String shopId) {
 		int result = shopRepository.deleteById(shopId);
 		if (result != 1) {
 
@@ -65,7 +65,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public boolean exist(Integer shopId) {
+	public boolean exist(String shopId) {
 		return this.getById(shopId).isPresent();
 	}
 
