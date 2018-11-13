@@ -7,7 +7,7 @@ import com.yczd.api.aio.good.model.entity.Good;
 public interface GoodService {
 	List<Good> getAll();
 
-	Good getById(Integer id);
+	Good getById(String id);
 
 	Good getByName(String name);
 
@@ -15,5 +15,5 @@ public interface GoodService {
 
 	void delete(Good good);
 
-	void deleteById(Integer id);
+	void deleteById(String id);
 }
