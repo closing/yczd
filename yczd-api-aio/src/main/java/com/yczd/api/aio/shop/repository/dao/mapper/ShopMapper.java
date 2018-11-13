@@ -9,30 +9,36 @@ import com.yczd.api.aio.shop.model.entity.Shop;
 import com.yczd.api.aio.shop.model.entity.ShopCriteria;
 
 public interface ShopMapper {
-	long countByExample(ShopCriteria example);
+    long countByExample(ShopCriteria example);
 
-	int deleteByExample(ShopCriteria example);
+    int deleteByExample(ShopCriteria example);
 
-	int deleteByPrimaryKey(Integer shopId);
+    int deleteByPrimaryKey(String id);
 
-	int insert(Shop record);
+    int insert(Shop record);
 
-	int insertSelective(Shop record);
+    int insertSelective(Shop record);
 
-	List<Shop> selectByExampleWithRowbounds(ShopCriteria example, RowBounds rowBounds);
+    List<Shop> selectByExampleWithBLOBsWithRowbounds(ShopCriteria example, RowBounds rowBounds);
 
-	List<Shop> selectByExample(ShopCriteria example);
+    List<Shop> selectByExampleWithBLOBs(ShopCriteria example);
 
-	Shop selectByPrimaryKey(Integer shopId);
+    List<Shop> selectByExampleWithRowbounds(ShopCriteria example, RowBounds rowBounds);
 
-	int updateByExampleSelective(@Param("record") Shop record, @Param("example") ShopCriteria example);
+    List<Shop> selectByExample(ShopCriteria example);
 
-	int updateByExample(@Param("record") Shop record, @Param("example") ShopCriteria example);
+    Shop selectByPrimaryKey(String id);
 
-	int updateByPrimaryKeySelective(Shop record);
+    int updateByExampleSelective(@Param("record") Shop record, @Param("example") ShopCriteria example);
 
-	int updateByPrimaryKey(Shop record);
+    int updateByExampleWithBLOBs(@Param("record") Shop record, @Param("example") ShopCriteria example);
 
-	List<Shop> selectAll();
+    int updateByExample(@Param("record") Shop record, @Param("example") ShopCriteria example);
 
+    int updateByPrimaryKeySelective(Shop record);
+
+    int updateByPrimaryKeyWithBLOBs(Shop record);
+
+    int updateByPrimaryKey(Shop record);
+    List<Shop> selectAll();
 }
