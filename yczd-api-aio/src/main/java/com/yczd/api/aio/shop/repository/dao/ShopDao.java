@@ -18,7 +18,7 @@ public class ShopDao implements ShopRepository {
 	private SqlSession sqlSession;
 
 	@Override
-	public Shop getShopById(Integer id) {
+	public Shop getShopById(String id) {
 
 		return sqlSession.getMapper(ShopMapper.class).selectByPrimaryKey(id);
 	}
@@ -40,12 +40,12 @@ public class ShopDao implements ShopRepository {
 
 	@Override
 	public int delete(Shop shop) {
-		return deleteById(shop.getShopId());
+		return deleteById(shop.getId());
 
 	}
 
 	@Override
-	public int deleteById(Integer shopId) {
+	public int deleteById(String shopId) {
 		return sqlSession.getMapper(ShopMapper.class).deleteByPrimaryKey(shopId);
 	}
 }
