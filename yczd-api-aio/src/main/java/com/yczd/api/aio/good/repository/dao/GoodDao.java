@@ -24,7 +24,7 @@ public class GoodDao implements GoodRepository {
 		return sqlSession.getMapper(GoodMapper.class).selectAll();
 	}
 
-	public Good findById(Integer id) {
+	public Good findById(String id) {
 		return sqlSession.getMapper(GoodMapper.class).selectByPrimaryKey(id);
 	}
 
@@ -43,7 +43,7 @@ public class GoodDao implements GoodRepository {
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(String id) {
 		// TODO deleteById
 
 	}
