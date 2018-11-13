@@ -28,10 +28,10 @@ import com.yczd.api.aio.auth2.service.impl.Auth2UserDetailsServiceImpl;
 @EnableWebSecurity
 public class Auth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
-	@ConfigurationProperties(value = "yczd.auth2.datasource")
+	// @ConfigurationProperties(value = "yczd.auth2.datasource")
 	public DataSource auth2DataSource() {
 		return DataSourceBuilder.create().driverClassName("com.mysql.jdbc.Driver")
-				.url("jdbc:mysql://10.207.30.152:3306/yczd_mini").password("admin").username("root").build();
+				.url("jdbc:mysql://localhost:3306/yczd_mini").password("admin").username("root").build();
 	}
 
 	//
