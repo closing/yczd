@@ -13,25 +13,33 @@ public interface GoodMapper {
 
     int deleteByExample(GoodCriteria example);
 
-    int deleteByPrimaryKey(Integer goodId);
+    int deleteByPrimaryKey(String id);
 
     int insert(Good record);
 
     int insertSelective(Good record);
 
+    List<Good> selectByExampleWithBLOBsWithRowbounds(GoodCriteria example, RowBounds rowBounds);
+
+    List<Good> selectByExampleWithBLOBs(GoodCriteria example);
+
     List<Good> selectByExampleWithRowbounds(GoodCriteria example, RowBounds rowBounds);
 
     List<Good> selectByExample(GoodCriteria example);
-    List<Good> selectAll();
 
-    Good selectByPrimaryKey(Integer goodId);
+    Good selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Good record, @Param("example") GoodCriteria example);
+
+    int updateByExampleWithBLOBs(@Param("record") Good record, @Param("example") GoodCriteria example);
 
     int updateByExample(@Param("record") Good record, @Param("example") GoodCriteria example);
 
     int updateByPrimaryKeySelective(Good record);
 
+    int updateByPrimaryKeyWithBLOBs(Good record);
+
     int updateByPrimaryKey(Good record);
 
+    List<Good> selectAll();
 }
