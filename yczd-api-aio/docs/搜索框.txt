@@ -6,3 +6,4 @@
 3.拼音分词器
   pinyin4j
   http://pinyin4j.sourceforge.net/
+  pinyinAnalyzer
