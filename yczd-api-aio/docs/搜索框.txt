@@ -1,0 +1,6 @@
+1.solr安装
+  https://lucene.apache.org/solr/mirrors-solr-latest-redir.html
+2.ik分词器
+  https://search.maven.org/search?q=com.github.magese
+  https://github.com/magese/ik-analyzer-solr7
+3.拼音分词器
