@@ -11,7 +11,9 @@
 配置
 <fieldType name="text_pinyin" class="solr.TextField" positionIncrementGap="0">
     <analyzer type="index">
-        <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory"/>
+        <!-- org.apache.lucene.analysis.cn.smart.HMMChineseTokenizerFactory -->
+        <!-- org.wltea.analyzer.lucene.IKTokenizerFactory -->
+        <tokenizer class="org.apache.lucene.analysis.cn.smart.HMMChineseTokenizerFactory"/>
         <filter class="com.shentong.search.analyzers.PinyinTransformTokenFilterFactory" minTermLenght="2" />
         <filter class="com.shentong.search.analyzers.PinyinNGramTokenFilterFactory" minGram="1" maxGram="20" />
     </analyzer>
